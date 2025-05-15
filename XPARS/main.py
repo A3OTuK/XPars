@@ -10,7 +10,7 @@ from Search import YouTubeSearcher
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.5"  # Обновленная версия
+APP_VERSION = "0.6"  # Обновленная версия
 
 # Настройка логирования
 logging.basicConfig(

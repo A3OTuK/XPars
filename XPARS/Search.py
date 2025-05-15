@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from TGPars import TelegramParser
 
 # Настройка логирования
 logging.basicConfig(
@@ -33,7 +34,7 @@ class YouTubeSearcher:
 
     def save_results_to_excel(self, query, urls):
         """
-        Сохраняет результаты поиска в Excel-файл.
+        Сохраняет результаты поиска в Excel-файл и запускает парсинг Telegram-ссылок.
         :param query: Поисковый запрос.
         :param urls: Список ссылок на каналы.
         :return: Путь к сохраненному файлу или None в случае ошибки.
@@ -65,10 +66,44 @@ class YouTubeSearcher:
             # Сохраняем в Excel
             combined_data.to_excel(file_path, index=False, header=False)
             logger.info(f"Результаты сохранены в {file_path}")
+
+            # Запускаем парсинг Telegram-ссылок
+            self.parse_telegram_links(file_path)
+
             return file_path
         except Exception as e:
             logger.error(f"Ошибка при сохранении в Excel: {str(e)}", exc_info=True)
             return None
+
+    def parse_telegram_links(self, file_path):
+        """
+        Парсит Telegram-ссылки из описания YouTube-каналов и записывает их в Excel.
+        :param file_path: Путь к Excel-файлу с YouTube-ссылками.
+        :return: None
+        """
+        try:
+            # Загружаем данные из Excel
+            df = pd.read_excel(file_path, header=None)
+            df.columns = ["Результаты"]
+
+            # Инициализируем парсер
+            parser = TelegramParser()
+
+            # Парсим Telegram-ссылки для каждой строки
+            for index, row in df.iterrows():
+                if "https://www.youtube.com/" in str(row["Результаты"]):
+                    telegram_link = parser.parse_telegram_link(row["Результаты"])
+                    if telegram_link:
+                        df.at[index, "Telegram"] = telegram_link
+
+            # Сохраняем обновленные данные в Excel
+            df.to_excel(file_path, index=False, header=False)
+            logger.info(f"Telegram-ссылки добавлены в {file_path}")
+
+            # Закрываем парсер
+            parser.close()
+        except Exception as e:
+            logger.error(f"Ошибка при парсинге Telegram-ссылок: {str(e)}", exc_info=True)
 
     def setup_driver(self):
         """Настраивает и возвращает драйвер Chrome в headless режиме."""
