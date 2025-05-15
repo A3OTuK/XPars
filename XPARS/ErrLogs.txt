@@ -1,0 +1,168 @@
+2025-05-15 00:30:10,849 - __main__ - ERROR - нЬХАЙЮ ОНХЯЙЮ: Message: session not created: This version of ChromeDriver only supports Chrome version 134
+Current browser version is 136.0.7103.93 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF6C0A5FE45+26629]
+	(No symbol) [0x00007FF6C09C6010]
+	(No symbol) [0x00007FF6C085931A]
+	(No symbol) [0x00007FF6C089D40D]
+	(No symbol) [0x00007FF6C089C44B]
+	(No symbol) [0x00007FF6C089655C]
+	(No symbol) [0x00007FF6C0891B2D]
+	(No symbol) [0x00007FF6C08E5D0B]
+	(No symbol) [0x00007FF6C08E52E0]
+	(No symbol) [0x00007FF6C08D7883]
+	(No symbol) [0x00007FF6C08A0550]
+	(No symbol) [0x00007FF6C08A1803]
+	GetHandleVerifier [0x00007FF6C0DB72BD+3529853]
+	GetHandleVerifier [0x00007FF6C0DCDA22+3621858]
+	GetHandleVerifier [0x00007FF6C0DC24D3+3575443]
+	GetHandleVerifier [0x00007FF6C0B2B77A+860474]
+	(No symbol) [0x00007FF6C09D088F]
+	(No symbol) [0x00007FF6C09CCBC4]
+	(No symbol) [0x00007FF6C09CCD66]
+	(No symbol) [0x00007FF6C09BC2C9]
+	BaseThreadInitThunk [0x00007FFE98077374+20]
+	RtlUserThreadStart [0x00007FFE99F9CC91+33]
+Traceback (most recent call last):
+  File "D:\опнейрш чрса\XPARS\main.py", line 170, in start_search
+    searcher = YouTubeSearcher()
+  File "D:\опнейрш чрса\XPARS\Search.py", line 15, in __init__
+    self._init_driver()
+    ~~~~~~~~~~~~~~~~~^^
+  File "D:\опнейрш чрса\XPARS\Search.py", line 24, in _init_driver
+    self.driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options)
+                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 67, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 260, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 357, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 448, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 134
+Current browser version is 136.0.7103.93 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF6C0A5FE45+26629]
+	(No symbol) [0x00007FF6C09C6010]
+	(No symbol) [0x00007FF6C085931A]
+	(No symbol) [0x00007FF6C089D40D]
+	(No symbol) [0x00007FF6C089C44B]
+	(No symbol) [0x00007FF6C089655C]
+	(No symbol) [0x00007FF6C0891B2D]
+	(No symbol) [0x00007FF6C08E5D0B]
+	(No symbol) [0x00007FF6C08E52E0]
+	(No symbol) [0x00007FF6C08D7883]
+	(No symbol) [0x00007FF6C08A0550]
+	(No symbol) [0x00007FF6C08A1803]
+	GetHandleVerifier [0x00007FF6C0DB72BD+3529853]
+	GetHandleVerifier [0x00007FF6C0DCDA22+3621858]
+	GetHandleVerifier [0x00007FF6C0DC24D3+3575443]
+	GetHandleVerifier [0x00007FF6C0B2B77A+860474]
+	(No symbol) [0x00007FF6C09D088F]
+	(No symbol) [0x00007FF6C09CCBC4]
+	(No symbol) [0x00007FF6C09CCD66]
+	(No symbol) [0x00007FF6C09BC2C9]
+	BaseThreadInitThunk [0x00007FFE98077374+20]
+	RtlUserThreadStart [0x00007FFE99F9CC91+33]
+
+2025-05-15 00:31:07,398 - __main__ - ERROR - нЬХАЙЮ ОНХЯЙЮ: Message: session not created: This version of ChromeDriver only supports Chrome version 134
+Current browser version is 136.0.7103.93 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF6C0A5FE45+26629]
+	(No symbol) [0x00007FF6C09C6010]
+	(No symbol) [0x00007FF6C085931A]
+	(No symbol) [0x00007FF6C089D40D]
+	(No symbol) [0x00007FF6C089C44B]
+	(No symbol) [0x00007FF6C089655C]
+	(No symbol) [0x00007FF6C0891B2D]
+	(No symbol) [0x00007FF6C08E5D0B]
+	(No symbol) [0x00007FF6C08E52E0]
+	(No symbol) [0x00007FF6C08D7883]
+	(No symbol) [0x00007FF6C08A0550]
+	(No symbol) [0x00007FF6C08A1803]
+	GetHandleVerifier [0x00007FF6C0DB72BD+3529853]
+	GetHandleVerifier [0x00007FF6C0DCDA22+3621858]
+	GetHandleVerifier [0x00007FF6C0DC24D3+3575443]
+	GetHandleVerifier [0x00007FF6C0B2B77A+860474]
+	(No symbol) [0x00007FF6C09D088F]
+	(No symbol) [0x00007FF6C09CCBC4]
+	(No symbol) [0x00007FF6C09CCD66]
+	(No symbol) [0x00007FF6C09BC2C9]
+	BaseThreadInitThunk [0x00007FFE98077374+20]
+	RtlUserThreadStart [0x00007FFE99F9CC91+33]
+Traceback (most recent call last):
+  File "D:\опнейрш чрса\XPARS\main.py", line 170, in start_search
+    searcher = YouTubeSearcher()
+  File "D:\опнейрш чрса\XPARS\Search.py", line 15, in __init__
+    self._init_driver()
+    ~~~~~~~~~~~~~~~~~^^
+  File "D:\опнейрш чрса\XPARS\Search.py", line 24, in _init_driver
+    self.driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options)
+                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 67, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 260, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 357, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 448, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\опнейрш чрса\XPARS\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 134
+Current browser version is 136.0.7103.93 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF6C0A5FE45+26629]
+	(No symbol) [0x00007FF6C09C6010]
+	(No symbol) [0x00007FF6C085931A]
+	(No symbol) [0x00007FF6C089D40D]
+	(No symbol) [0x00007FF6C089C44B]
+	(No symbol) [0x00007FF6C089655C]
+	(No symbol) [0x00007FF6C0891B2D]
+	(No symbol) [0x00007FF6C08E5D0B]
+	(No symbol) [0x00007FF6C08E52E0]
+	(No symbol) [0x00007FF6C08D7883]
+	(No symbol) [0x00007FF6C08A0550]
+	(No symbol) [0x00007FF6C08A1803]
+	GetHandleVerifier [0x00007FF6C0DB72BD+3529853]
+	GetHandleVerifier [0x00007FF6C0DCDA22+3621858]
+	GetHandleVerifier [0x00007FF6C0DC24D3+3575443]
+	GetHandleVerifier [0x00007FF6C0B2B77A+860474]
+	(No symbol) [0x00007FF6C09D088F]
+	(No symbol) [0x00007FF6C09CCBC4]
+	(No symbol) [0x00007FF6C09CCD66]
+	(No symbol) [0x00007FF6C09BC2C9]
+	BaseThreadInitThunk [0x00007FFE98077374+20]
+	RtlUserThreadStart [0x00007FFE99F9CC91+33]
+
