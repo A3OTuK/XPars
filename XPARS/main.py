@@ -10,7 +10,7 @@ from Search import YouTubeSearcher
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.3"  # Обновленная версия
+APP_VERSION = "0.5"  # Обновленная версия
 
 # Настройка логирования
 logging.basicConfig(
@@ -238,16 +238,13 @@ class XParserApp:
             found_urls = searcher.search(search_query, max_results)
 
             # Выводим результаты
-            self.results_text.insert(tk.END, "\n=== РЕЗУЛЬТАТЫ ===\n\n")
+            self.results_text.insert(tk.END, f"\n{datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n")  # Дата
 
             if not found_urls:
                 self.results_text.insert(tk.END, "Новых каналов не найдено\n")
             else:
                 for url in found_urls:
                     self.results_text.insert(tk.END, f"{url}\n")
-
-            # Сохраняем в файл
-            self._save_results(found_urls, search_query)
 
             # Статистика
             stats = searcher.get_stats()
