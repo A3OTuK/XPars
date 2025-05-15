@@ -6,6 +6,7 @@ from datetime import datetime
 import os
 import logging
 from logging.handlers import RotatingFileHandler
+from Search import YouTubeSearcher
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"

@@ -1,101 +1,133 @@
+import concurrent.futures
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from datetime import datetime
-import os
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
+import os
+import logging
 
+logger = logging.getLogger(__name__)
 
 class YouTubeSearcher:
     def __init__(self):
-        self.driver = None
-        self.processed_urls = set()
-        self._init_driver()
-        self._load_processed_urls()
+        self.stats = {
+            "total_queries": 0,
+            "total_channels_found": 0,
+            "last_search_time": None
+        }
+        self.found_channels_file = "found_channels.txt"
+        self.found_channels = self._load_found_channels()
 
-    def _init_driver(self):
-        """Инициализация Chrome в headless-режиме"""
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
-        options.add_argument('--disable-gpu')
-        options.add_argument('--no-sandbox')
-        self.driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options)
+    def _load_found_channels(self):
+        """Загрузка уже найденных каналов из файла"""
+        if not os.path.exists(self.found_channels_file):
+            return set()
 
-    def _load_processed_urls(self):
-        """Загрузка обработанных URL из текстового файла"""
-        if os.path.exists('processed_urls.txt'):
-            with open('processed_urls.txt', 'r') as f:
-                self.processed_urls = set(line.strip() for line in f if line.strip())
+        with open(self.found_channels_file, "r", encoding="utf-8") as file:
+            return {line.strip() for line in file if line.strip()}
 
-    def _save_urls(self, new_urls):
-        """Добавление новых URL в файл"""
-        with open('processed_urls.txt', 'a') as f:
-            for url in new_urls:
-                f.write(f"{url}\n")
+    def _save_found_channels(self, new_channels):
+        """Сохранение новых каналов в файл"""
+        with open(self.found_channels_file, "a", encoding="utf-8") as file:
+            for channel in new_channels:
+                file.write(f"{channel}\n")
 
-    def _scroll_page(self, scroll_times=3):
-        """Прокрутка страницы для загрузки контента"""
-        for _ in range(scroll_times):
-            self.driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
-            time.sleep(1.5)
+    def setup_driver(self):
+        """Настройка драйвера Chrome в headless режиме"""
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--log-level=3')
+        chrome_options.add_argument('--disable-extensions')
+        chrome_options.add_argument('--disable-notifications')
+
+        service = Service(ChromeDriverManager().install())
+        return webdriver.Chrome(service=service, options=chrome_options)
+
+    def scroll_to_bottom(self, driver):
+        """Скролл страницы до конца"""
+        last_height = driver.execute_script("return document.documentElement.scrollHeight")
+        while True:
+            driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
+            time.sleep(2)
+            new_height = driver.execute_script("return document.documentElement.scrollHeight")
+            if new_height == last_height:
+                break
+            last_height = new_height
+
+    def get_channel_links(self, search_query, max_retries=3):
+        """Поиск ссылок на каналы по запросу"""
+        for attempt in range(max_retries):
+            driver = None
+            try:
+                driver = self.setup_driver()
+                search_url = f"https://www.youtube.com/results?search_query={search_query.replace(' ', '+')}&sp=EgQIBRAB"
+                driver.get(search_url)
+
+                WebDriverWait(driver, 20).until(
+                    EC.presence_of_element_located((By.ID, "content"))
+                )
+
+                self.scroll_to_bottom(driver)
+
+                links = WebDriverWait(driver, 10).until(
+                    EC.presence_of_all_elements_located((By.TAG_NAME, "a"))
+                )
+                channel_links = set()
+
+                for link in links:
+                    try:
+                        href = link.get_attribute("href")
+                        if href and "@" in href:
+                            channel_links.add(href)
+                            logger.info(f"Найден канал: {href}")
+                    except Exception as e:
+                        logger.error(f"Ошибка при обработке ссылки: {str(e)}")
+                        continue
+
+                return channel_links
+
+            except Exception as e:
+                logger.error(f"Попытка {attempt + 1} не удалась: {str(e)}")
+                if attempt == max_retries - 1:
+                    return set()
+                time.sleep(2)
+                continue
+            finally:
+                if driver:
+                    driver.quit()
+
+        return set()
 
     def search(self, query, max_results=10):
-        """
-        Поиск новых YouTube-каналов
-        Возвращает список новых URL
-        """
-        try:
-            # Формируем URL поиска с фильтром по каналам
-            search_url = f"https://www.youtube.com/results?search_query={query}&sp=EgIQAg%253D%253D"
-            self.driver.get(search_url)
+        """Основной метод поиска"""
+        self.stats["total_queries"] += 1
+        self.stats["last_search_time"] = time.strftime("%Y-%m-%d %H:%M:%S")
 
-            # Ожидаем загрузки результатов
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-channel-renderer"))
-            )
+        # Получаем все каналы по запросу
+        all_channels = self.get_channel_links(query)
 
-            # Прокручиваем для загрузки больше результатов
-            self._scroll_page()
+        # Фильтруем уже найденные каналы
+        new_channels = [channel for channel in all_channels if channel not in self.found_channels]
 
-            # Собираем все ссылки на каналы
-            new_urls = []
-            channels = self.driver.find_elements(By.CSS_SELECTOR, "ytd-channel-renderer")[:max_results]
+        # Обновляем список найденных каналов
+        if new_channels:
+            self._save_found_channels(new_channels)
+            self.found_channels.update(new_channels)
+            self.stats["total_channels_found"] += len(new_channels)
 
-            for channel in channels:
-                try:
-                    url = channel.find_element(By.CSS_SELECTOR, "a.yt-simple-endpoint").get_attribute("href")
-                    if url and url not in self.processed_urls:
-                        new_urls.append(url)
-                        self.processed_urls.add(url)
-                except:
-                    continue
-
-            # Сохраняем новые URL
-            if new_urls:
-                self._save_urls(new_urls)
-                self._save_search_log(query, len(new_urls))
-
-            return new_urls
-
-        except Exception as e:
-            print(f"Ошибка при поиске: {str(e)}")
-            return []
-        finally:
-            if self.driver:
-                self.driver.quit()
-
-    def _save_search_log(self, query, found_count):
-        """Логгирование поисковых запросов"""
-        log_entry = f"{datetime.now().strftime('%Y-%m-%d %H:%M')} | Запрос: '{query}' | Найдено: {found_count}\n"
-        with open('search_log.txt', 'a', encoding='utf-8') as f:
-            f.write(log_entry)
+        return new_channels[:max_results]
 
     def get_stats(self):
-        """Простая статистика"""
-        total = len(self.processed_urls)
-        today = datetime.now().strftime('%Y-%m-%d')
-        today_count = sum(1 for _ in open('processed_urls.txt') if today in _) if os.path.exists(
-            'processed_urls.txt') else 0
-        return f"Всего URL: {total} | Сегодня: {today_count}"
+        """Получение статистики поиска"""
+        return (
+            f"Запросов: {self.stats['total_queries']}, "
+            f"Каналов найдено: {self.stats['total_channels_found']}, "
+            f"Последний поиск: {self.stats['last_search_time']}"
+        )
