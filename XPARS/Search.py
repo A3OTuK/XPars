@@ -48,23 +48,24 @@ class YouTubeSearcher:
             filename = f"{query_safe}.xlsx"
             file_path = os.path.join(self.results_dir, filename)
 
-            # Формируем данные для записи
-            date_str = datetime.now().strftime("%d.%m.%Y %H:%M")  # Формат "число.месяц.год часы:минуты"
-            new_data = pd.DataFrame({
-                "Результаты": [date_str] + urls  # Дата в первой ячейке, ссылки ниже
-            })
+            # Формируем данные для записи (с двумя колонками)
+            date_str = datetime.now().strftime("%d.%m.%Y %H:%M")
+            data = {
+                "YouTube": urls,
+                "Telegram": ["Not parsed yet"] * len(urls)  # Заполнитель для второй колонки
+            }
+            new_data = pd.DataFrame(data)
 
             # Если файл уже существует, загружаем старые данные
             if os.path.exists(file_path):
-                old_data = pd.read_excel(file_path, header=None)
-                # Убедимся, что старые данные имеют ту же структуру
-                old_data.columns = ["Результаты"]
+                old_data = pd.read_excel(file_path)
+                # Объединяем старые и новые данные
                 combined_data = pd.concat([old_data, new_data], ignore_index=True)
             else:
                 combined_data = new_data
 
             # Сохраняем в Excel
-            combined_data.to_excel(file_path, index=False, header=False)
+            combined_data.to_excel(file_path, index=False)
             logger.info(f"Результаты сохранены в {file_path}")
 
             # Запускаем парсинг Telegram-ссылок
@@ -83,22 +84,27 @@ class YouTubeSearcher:
         """
         try:
             # Загружаем данные из Excel
-            df = pd.read_excel(file_path, header=None)
-            df.columns = ["Результаты"]
+            df = pd.read_excel(file_path)
+
+            # Проверяем наличие нужных колонок
+            if 'YouTube' not in df.columns:
+                df.rename(columns={df.columns[0]: 'YouTube'}, inplace=True)
+            if 'Telegram' not in df.columns:
+                df['Telegram'] = 'Not parsed yet'
 
             # Инициализируем парсер
             parser = TelegramParser()
 
             # Парсим Telegram-ссылки для каждой строки
             for index, row in df.iterrows():
-                if "https://www.youtube.com/" in str(row["Результаты"]):
-                    telegram_link = parser.parse_telegram_link(row["Результаты"])
-                    if telegram_link:
-                        df.at[index, "Telegram"] = telegram_link
+                if isinstance(row['YouTube'], str) and "https://www.youtube.com/" in row['YouTube']:
+                    if row['Telegram'] in ['Not parsed yet', 'Not found']:
+                        telegram_link = parser.parse_telegram_link(row['YouTube'])
+                        df.at[index, 'Telegram'] = telegram_link if telegram_link else "Not found"
 
             # Сохраняем обновленные данные в Excel
-            df.to_excel(file_path, index=False, header=False)
-            logger.info(f"Telegram-ссылки добавлены в {file_path}")
+            df.to_excel(file_path, index=False)
+            logger.info(f"Telegram-ссылки обновлены в {file_path}")
 
             # Закрываем парсер
             parser.close()
