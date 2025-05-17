@@ -9,7 +9,7 @@ import sys
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.61"
+APP_VERSION = "0.7"
 
 # Настройка логирования ДО всех импортов
 logging.basicConfig(

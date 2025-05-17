@@ -1,4 +1,5 @@
 import re
+import time
 from urllib.parse import urlparse, parse_qs, unquote
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

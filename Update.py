@@ -5,7 +5,7 @@ import logging
 from packaging import version
 
 class Updater:
-    def __init__(self, current_version="0.61"):
+    def __init__(self, current_version="0.7"):
         self.current_version = current_version
         self.github_repo = "A3OTuK/XPars"  # Ваш репозиторий
         self.latest_version = None
