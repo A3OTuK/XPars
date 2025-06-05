@@ -6,6 +6,8 @@ from datetime import datetime
 import os
 import logging
 import sys
+import threading
+from queue import Queue
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
@@ -22,13 +24,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 def log_system_info():
     """Логируем системную информацию"""
     logger.info(f"Python: {sys.version}")
     logger.info(f"System: {os.name}")
     logger.info(f"Working dir: {os.getcwd()}")
     logger.info(f"Executable: {sys.executable}")
+
+
 log_system_info()
+
 
 class XParserApp:
     def __init__(self, root):
@@ -44,6 +50,11 @@ class XParserApp:
         # Конфигурационные переменные
         self.search_tags = ""
         self.max_results = 10
+
+        # Настройка многопоточности
+        self.search_threads = []
+        self.results_lock = threading.Lock()
+        self.stop_event = threading.Event()
 
         # Настройка шрифтов
         self.main_font = tkfont.Font(family="Helvetica", size=12)
@@ -222,6 +233,7 @@ class XParserApp:
     def start_search(self):
         """Запуск поиска каналов"""
         self.results_text.delete(1.0, tk.END)
+        self.stop_event.clear()  # Сбрасываем флаг остановки
 
         try:
             # Получаем параметры
@@ -241,30 +253,16 @@ class XParserApp:
             self.results_text.insert(tk.END, f"Лимит результатов: {max_results}\n\n")
             self.results_text.update()
 
-            # Выполняем поиск с логированием
-            logger.debug(f"Начало поиска по запросу: {search_query}")
-            searcher = YouTubeSearcher()
-            found_urls = searcher.search(search_query, max_results)
-
-            # Проверка результатов
-            if found_urls:
-                logger.info(f"Найдено {len(found_urls)} каналов")
-            else:
-                logger.warning("Каналы не найдены")
-
-            # Выводим результаты
-            self.results_text.insert(tk.END, f"\n{datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n")  # Дата
-
-            if not found_urls:
-                self.results_text.insert(tk.END, "Новых каналов не найдено\n")
-            else:
-                for url in found_urls:
-                    self.results_text.insert(tk.END, f"{url}\n")
-
-            # Статистика
-            stats = searcher.get_stats()
-            self.results_text.insert(tk.END, f"\nСтатистика: {stats}\n")
-            self.results_text.insert(tk.END, "\nПоиск завершен!\n")
+            # Создаем и запускаем потоки
+            self.search_threads = []
+            for i in range(3):  # 3 потока для поиска
+                t = threading.Thread(
+                    target=self._threaded_search,
+                    args=(search_query, max_results),
+                    daemon=True
+                )
+                t.start()
+                self.search_threads.append(t)
 
         except ValueError as e:
             logger.error(f"Ошибка ввода: {str(e)}")
@@ -272,6 +270,28 @@ class XParserApp:
         except Exception as e:
             logger.error(f"Ошибка поиска: {str(e)}", exc_info=True)
             messagebox.showerror("Ошибка", f"Ошибка при поиске: {str(e)}")
+
+    def _threaded_search(self, search_query, max_results):
+        """Метод для выполнения поиска в потоке"""
+        try:
+            searcher = YouTubeSearcher()
+            found_urls = searcher.search(search_query, max_results)
+
+            with self.results_lock:
+                if found_urls:
+                    self.results_text.insert(tk.END, f"\n{datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n")
+                    for url in found_urls:
+                        self.results_text.insert(tk.END, f"{url}\n")
+
+                    stats = searcher.get_stats()
+                    self.results_text.insert(tk.END, f"\nСтатистика: {stats}\n")
+                    self.results_text.insert(tk.END, "\nПоиск завершен!\n")
+                else:
+                    self.results_text.insert(tk.END, "Новых каналов не найдено\n")
+
+                self.results_text.update()
+        except Exception as e:
+            logger.error(f"Ошибка в потоке поиска: {str(e)}")
 
     def _save_results(self, urls, query):
         """Сохранение результатов в файл"""
@@ -315,6 +335,7 @@ class XParserApp:
         except Exception as e:
             logger.error(f"Ошибка сохранения: {str(e)}", exc_info=True)
             messagebox.showerror("Ошибка", f"Неизвестная ошибка: {str(e)}")
+
 
 if __name__ == "__main__":
     try:

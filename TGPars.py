@@ -1,47 +1,50 @@
 import re
 import time
+import logging
 from urllib.parse import urlparse, parse_qs, unquote
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-import logging
+import threading
+
 
 class TelegramParser:
     def __init__(self, driver):
         self.driver = driver
-        self.timeout = 15  # Максимальное время ожидания элементов
+        self.timeout = 15
         self.logger = logging.getLogger(__name__)
+        self.lock = threading.Lock()
 
-        # Паттерны для поиска Telegram ссылок
         self.patterns = [
-            r'(https?://t\.me/[a-zA-Z0-9_\-]+)',  # Стандартные ссылки
+            r'(https?://t\.me/[a-zA-Z0-9_\-]+)',
             r'(https?://telegram\.me/[a-zA-Z0-9_\-]+)',
-            r'@([a-zA-Z0-9_\-]{5,32})',  # Username
+            r'@([a-zA-Z0-9_\-]{5,32})',
             r't\.me/([a-zA-Z0-9_\-]{5,32})',
             r'telegram\.me/([a-zA-Z0-9_\-]{5,32})'
         ]
 
     def parse_telegram_link(self, channel_url):
-        self.logger.info(f"Начинаем парсинг канала: {channel_url}")
+        with self.lock:
+            self.logger.info(f"Начинаем парсинг канала: {channel_url}")
 
-        # Вариант 1: Проверка редиректов
-        tg_link = self._find_telegram_link_via_redirect(channel_url)
-        if tg_link:
-            return tg_link
+            # Вариант 1: Проверка редиректов
+            tg_link = self._find_telegram_link_via_redirect(channel_url)
+            if tg_link:
+                return tg_link
 
-        # Вариант 2: Раздел "О канале"
-        tg_link = self._find_telegram_link_via_about_section(channel_url)
-        if tg_link:
-            return tg_link
+            # Вариант 2: Раздел "О канале"
+            tg_link = self._find_telegram_link_via_about_section(channel_url)
+            if tg_link:
+                return tg_link
 
-        # Вариант 3: Основное описание
-        tg_link = self._find_telegram_link_via_channel_description(channel_url)
-        if tg_link:
-            return tg_link
+            # Вариант 3: Основное описание
+            tg_link = self._find_telegram_link_via_channel_description(channel_url)
+            if tg_link:
+                return tg_link
 
-        self.logger.warning("Telegram ссылка не найдена")
-        return None
+            self.logger.warning("Telegram ссылка не найдена")
+            return None
 
     def _find_telegram_link_via_redirect(self, channel_url):
         try:
