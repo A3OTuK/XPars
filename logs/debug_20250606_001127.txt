@@ -1,0 +1,18 @@
+2025-06-06 00:11:29,382 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-06 00:11:39,395 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-06 00:11:48,462 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-06 00:11:48,489 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-06 00:11:48,490 - __main__ - INFO - Запущен поиск: 'Инвестиции'
+2025-06-06 00:11:48,490 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:11:52,378 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:11:52,543 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:11:52,692 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:12:40,894 - Search - INFO - Найдено каналов: 78
+2025-06-06 00:12:44,423 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:12:50,847 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:12:51,000 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:12:51,136 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:12:54,499 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@EnhancedInvestments
+2025-06-06 00:13:42,933 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:13:42,933 - Search - INFO - Обработан канал: https://www.youtube.com/@EnhancedInvestments -> Not found
+2025-06-06 00:13:47,722 - WDM - INFO - ====== WebDriver manager ======

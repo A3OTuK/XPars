@@ -1,0 +1,132 @@
+2025-06-06 00:16:23,884 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-06 00:16:33,373 - __main__ - INFO - Сохранены теги: 'Dota...'
+2025-06-06 00:16:35,898 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-06 00:16:35,903 - Search - INFO - Поиск каналов (попытка 1): 'Dota'
+2025-06-06 00:16:35,903 - __main__ - INFO - Запущен поиск: 'Dota'
+2025-06-06 00:16:35,904 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:16:38,513 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:16:38,675 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:16:38,809 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:17:07,527 - Search - INFO - Найдено каналов: 80
+2025-06-06 00:17:09,984 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:17:12,173 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:17:12,323 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:17:12,455 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:17:14,609 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@CariesDota
+2025-06-06 00:17:42,538 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:17:42,538 - Search - INFO - Обработан канал: https://www.youtube.com/@CariesDota -> Not found
+2025-06-06 00:17:46,362 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:17:47,822 - __main__ - INFO - Создан новый Excel файл: results/results_20250606_001746.xlsx
+2025-06-06 00:17:48,756 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:17:48,891 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:17:49,021 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:17:50,878 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Dota2Divine
+2025-06-06 00:18:21,230 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:18:21,231 - Search - INFO - Обработан канал: https://www.youtube.com/@Dota2Divine -> Not found
+2025-06-06 00:18:24,133 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:18:26,213 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:18:26,376 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:18:26,525 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:18:27,904 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@milorddota2
+2025-06-06 00:18:52,222 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:18:52,223 - Search - INFO - Обработан канал: https://www.youtube.com/@milorddota2 -> Not found
+2025-06-06 00:18:56,372 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:18:58,573 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:18:58,708 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:18:58,842 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:19:00,127 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@DOTA3
+2025-06-06 00:19:08,632 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/staavr
+2025-06-06 00:19:08,633 - Search - INFO - Обработан канал: https://www.youtube.com/@DOTA3 -> https://t.me/staavr
+2025-06-06 00:19:10,886 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:19:12,568 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:19:12,701 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:19:12,827 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:19:14,342 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@sunrise_dota
+2025-06-06 00:19:40,290 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:19:40,290 - Search - INFO - Обработан канал: https://www.youtube.com/@sunrise_dota -> Not found
+2025-06-06 00:19:42,767 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:19:44,429 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:19:44,564 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:19:44,699 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:19:46,108 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@TOTSAMIIPAREN
+2025-06-06 00:20:09,744 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:20:09,744 - Search - INFO - Обработан канал: https://www.youtube.com/@TOTSAMIIPAREN -> Not found
+2025-06-06 00:20:12,238 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:20:13,901 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:20:14,036 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:20:14,173 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:20:15,696 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dotapma322
+2025-06-06 00:20:23,829 - TGPars - INFO - Найдена ссылка в редиректе: t.me/dotameneg
+2025-06-06 00:20:23,830 - Search - INFO - Обработан канал: https://www.youtube.com/@dotapma322 -> https://t.me/t.me/dotameneg
+2025-06-06 00:20:26,092 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:20:27,877 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:20:28,012 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:20:28,159 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:20:29,543 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@DotaWatafak
+2025-06-06 00:20:56,820 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:20:56,820 - Search - INFO - Обработан канал: https://www.youtube.com/@DotaWatafak -> Not found
+2025-06-06 00:21:00,554 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:21:02,336 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:21:02,472 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:21:02,606 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:21:04,080 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Arteans
+2025-06-06 00:21:47,657 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:21:47,658 - Search - INFO - Обработан канал: https://www.youtube.com/@Arteans -> Not found
+2025-06-06 00:21:50,207 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:21:52,697 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:21:52,835 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:21:52,976 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:21:55,092 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@metagamesevolution
+2025-06-06 00:22:20,835 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:22:20,836 - Search - INFO - Обработан канал: https://www.youtube.com/@metagamesevolution -> Not found
+2025-06-06 00:22:23,323 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:22:25,747 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:22:25,918 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:22:26,071 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:22:27,414 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@DotaAnalytics
+2025-06-06 00:22:46,820 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/dotapredict
+2025-06-06 00:22:46,820 - Search - INFO - Обработан канал: https://www.youtube.com/@DotaAnalytics -> https://t.me/dotapredict
+2025-06-06 00:22:49,865 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:22:51,374 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:22:51,500 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:22:51,630 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:22:53,438 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Dota2Rapier
+2025-06-06 00:23:20,918 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:23:20,919 - Search - INFO - Обработан канал: https://www.youtube.com/@Dota2Rapier -> Not found
+2025-06-06 00:23:23,327 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:23:25,155 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:23:25,303 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:23:25,463 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:23:26,836 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@sereGGa
+2025-06-06 00:23:33,495 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/sereggadota
+2025-06-06 00:23:33,496 - Search - INFO - Обработан канал: https://www.youtube.com/@sereGGa -> https://t.me/sereggadota
+2025-06-06 00:23:35,742 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:23:37,205 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:23:37,338 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:23:37,470 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:23:39,364 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@TypicalDota
+2025-06-06 00:24:03,705 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:24:03,705 - Search - INFO - Обработан канал: https://www.youtube.com/@TypicalDota -> Not found
+2025-06-06 00:24:06,425 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:24:07,862 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:24:07,995 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:24:08,141 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:24:09,476 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Origondota
+2025-06-06 00:24:16,515 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/gamelight
+2025-06-06 00:24:16,515 - Search - INFO - Обработан канал: https://www.youtube.com/@Origondota -> https://t.me/gamelight
+2025-06-06 00:24:18,794 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:24:20,942 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:24:21,102 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:24:21,234 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:24:22,608 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw
+2025-06-06 00:24:56,854 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:24:56,854 - Search - INFO - Обработан канал: https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw -> Not found
+2025-06-06 00:24:59,278 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:25:00,695 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:25:00,826 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:25:00,964 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:25:02,354 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@gurmandota
+2025-06-06 00:25:18,541 - Search - INFO - Поиск остановлен по команде пользователя
+2025-06-06 00:25:18,541 - __main__ - INFO - Поиск остановлен
+2025-06-06 00:25:27,514 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:25:27,514 - Search - INFO - Обработан канал: https://www.youtube.com/@gurmandota -> Not found

@@ -1,0 +1,193 @@
+2025-06-05 23:56:42,014 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-05 23:56:59,821 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-05 23:57:02,015 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-05 23:57:02,016 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-05 23:57:02,016 - __main__ - INFO - Запущен поиск: 'Инвестиции'
+2025-06-05 23:57:02,016 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:57:03,876 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:57:04,072 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:57:04,238 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:57:40,681 - Search - ERROR - Ошибка поиска (попытка 1): Message: timeout: Timed out receiving message from renderer: 30.000
+  (Session info: chrome=137.0.7151.57)
+Stacktrace:
+	GetHandleVerifier [0x0x1013763+63299]
+	GetHandleVerifier [0x0x10137a4+63364]
+	(No symbol) [0x0xe41113]
+	(No symbol) [0x0xe31beb]
+	(No symbol) [0x0xe31921]
+	(No symbol) [0x0xe2f8c4]
+	(No symbol) [0x0xe3038d]
+	(No symbol) [0x0xe3cb99]
+	(No symbol) [0x0xe4e265]
+	(No symbol) [0x0xe53c96]
+	(No symbol) [0x0xe309cd]
+	(No symbol) [0x0xe4dfc9]
+	(No symbol) [0x0xecfd65]
+	(No symbol) [0x0xeae376]
+	(No symbol) [0x0xe7d6e0]
+	(No symbol) [0x0xe7e544]
+	GetHandleVerifier [0x0x126e033+2531347]
+	GetHandleVerifier [0x0x1269332+2511634]
+	GetHandleVerifier [0x0x1039eda+220858]
+	GetHandleVerifier [0x0x102a528+156936]
+	GetHandleVerifier [0x0x1030c5d+183357]
+	GetHandleVerifier [0x0x101b6c8+95912]
+	GetHandleVerifier [0x0x101b870+96336]
+	GetHandleVerifier [0x0x100664a+9770]
+	BaseThreadInitThunk [0x0x7787fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc827e+238]
+
+2025-06-05 23:57:45,077 - Search - INFO - Поиск каналов (попытка 2): 'Инвестиции'
+2025-06-05 23:57:45,077 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:57:47,896 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:57:48,060 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:57:48,231 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:58:09,748 - Search - INFO - Найдено каналов: 80
+2025-06-05 23:58:12,908 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:58:16,337 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:16,518 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:16,664 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:58:20,252 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Kharybin
+2025-06-05 23:58:30,882 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/Kharyb
+2025-06-05 23:58:30,882 - Search - INFO - Обработан канал: https://www.youtube.com/@Kharybin -> https://t.me/Kharyb
+2025-06-05 23:58:33,454 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:58:34,437 - __main__ - INFO - Создан новый Excel файл: results/results_20250605_235833.xlsx
+2025-06-05 23:58:35,403 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:35,532 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:35,664 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:58:37,820 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@profitanet
+2025-06-05 23:58:47,184 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/joinchat/lTwimgeg6TIwZGVi
+2025-06-05 23:58:47,185 - Search - INFO - Обработан канал: https://www.youtube.com/@profitanet -> https://t.me/joinchat/lTwimgeg6TIwZGVi
+2025-06-05 23:58:49,594 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:58:49,727 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-05 23:58:51,446 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:51,582 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:58:51,729 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:58:53,371 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ
+2025-06-05 23:59:30,183 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:59:30,183 - Search - INFO - Обработан канал: https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ -> Not found
+2025-06-05 23:59:33,519 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:59:33,677 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-05 23:59:35,860 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:59:35,994 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:59:36,121 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:59:38,068 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Rybinday
+2025-06-05 23:59:48,766 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/rubinday50
+2025-06-05 23:59:48,767 - Search - INFO - Обработан канал: https://www.youtube.com/@Rybinday -> https://t.me/rubinday50
+2025-06-05 23:59:51,257 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:59:51,417 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-05 23:59:54,417 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:59:54,549 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:59:54,683 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:59:56,660 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@bogdanoffinvest
+2025-06-06 00:00:15,407 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/bogdanoffinvest
+2025-06-06 00:00:15,407 - Search - INFO - Обработан канал: https://www.youtube.com/@bogdanoffinvest -> https://t.me/bogdanoffinvest
+2025-06-06 00:00:18,707 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:00:18,866 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:00:21,220 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:21,357 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:21,497 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:21,885 - WDM - INFO - WebDriver version 137.0.7151.68 selected
+2025-06-06 00:00:21,893 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/win32/chromedriver-win32.zip
+2025-06-06 00:00:21,893 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/win32/chromedriver-win32.zip
+2025-06-06 00:00:22,144 - WDM - INFO - Driver downloading response is 200
+2025-06-06 00:00:25,163 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:31,576 - WDM - INFO - Driver has been saved in cache [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68]
+2025-06-06 00:00:33,922 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@BYKA_inves
+2025-06-06 00:00:45,570 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+S2xz_-dRXfliZmMy
+2025-06-06 00:00:45,570 - Search - INFO - Обработан канал: https://www.youtube.com/@BYKA_inves -> https://t.me/+S2xz_-dRXfliZmMy
+2025-06-06 00:00:47,942 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:00:48,111 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:00:49,687 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:49,882 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:00:50,015 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:00:51,619 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dzen-invest
+2025-06-06 00:01:00,848 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+p38TouV-2Uo4NTQy
+2025-06-06 00:01:00,848 - Search - INFO - Обработан канал: https://www.youtube.com/@dzen-invest -> https://t.me/+p38TouV-2Uo4NTQy
+2025-06-06 00:01:03,682 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:01:03,760 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:01:05,459 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:05,601 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:05,751 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:01:07,276 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@tremasov-dmitrii
+2025-06-06 00:01:16,033 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/prtf_speculator/2350
+2025-06-06 00:01:16,033 - Search - INFO - Обработан канал: https://www.youtube.com/@tremasov-dmitrii -> https://t.me/prtf_speculator/2350
+2025-06-06 00:01:18,346 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:01:18,436 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:01:20,042 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:20,182 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:20,313 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:01:21,948 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@%D0%98%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8101-%D1%876%D0%B4
+2025-06-06 00:01:51,999 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:01:51,999 - Search - INFO - Обработан канал: https://www.youtube.com/@%D0%98%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8101-%D1%876%D0%B4 -> Not found
+2025-06-06 00:01:56,697 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:01:56,852 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:01:58,670 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:58,813 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:01:58,947 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:02:00,715 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@InvestFutureRu
+2025-06-06 00:02:08,495 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/IF_adv
+2025-06-06 00:02:08,495 - Search - INFO - Обработан канал: https://www.youtube.com/@InvestFutureRu -> https://t.me/IF_adv
+2025-06-06 00:02:10,788 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:02:10,916 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:02:13,568 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:13,728 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:13,863 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:02:15,283 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@loflego
+2025-06-06 00:02:23,203 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/legoobsessedfans
+2025-06-06 00:02:23,203 - Search - INFO - Обработан канал: https://www.youtube.com/@loflego -> https://t.me/legoobsessedfans
+2025-06-06 00:02:25,522 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:02:25,667 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:02:27,829 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:27,993 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:28,163 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:02:30,435 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Kutsenko_invest
+2025-06-06 00:02:39,187 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+ymN-Jt40wOkxYzMy
+2025-06-06 00:02:39,187 - Search - INFO - Обработан канал: https://www.youtube.com/@Kutsenko_invest -> https://t.me/+ymN-Jt40wOkxYzMy
+2025-06-06 00:02:41,511 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:02:41,733 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:02:44,131 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:44,274 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:44,411 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:02:45,905 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dimatolstyakov
+2025-06-06 00:02:54,034 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+PkEp1baqxJ0zYTNi
+2025-06-06 00:02:54,034 - Search - INFO - Обработан канал: https://www.youtube.com/@dimatolstyakov -> https://t.me/+PkEp1baqxJ0zYTNi
+2025-06-06 00:02:56,288 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:02:56,429 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:02:59,850 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:02:59,982 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:03:00,127 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:03:01,536 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@tradezone2521
+2025-06-06 00:03:09,150 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+SS91V3lH6r0f4tmf?utm_source=youtube&utm_medium=o_kanale&utm_campaign=telegram_kanal
+2025-06-06 00:03:09,150 - Search - INFO - Обработан канал: https://www.youtube.com/@tradezone2521 -> https://t.me/+SS91V3lH6r0f4tmf
+2025-06-06 00:03:11,658 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:03:11,762 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:03:13,333 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:03:13,471 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:03:13,612 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:03:15,094 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@gpbi-investments
+2025-06-06 00:03:22,745 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/gpb_investments
+2025-06-06 00:03:22,746 - Search - INFO - Обработан канал: https://www.youtube.com/@gpbi-investments -> https://t.me/gpb_investments
+2025-06-06 00:03:25,150 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:03:25,234 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:03:27,049 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:03:27,195 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:03:27,330 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:03:29,915 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@financevolkova
+2025-06-06 00:03:57,810 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:03:57,811 - Search - INFO - Обработан канал: https://www.youtube.com/@financevolkova -> Not found
+2025-06-06 00:04:00,758 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:04:00,825 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:04:02,832 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:04:02,986 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:04:03,116 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:04:04,794 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@mansur_halalinvest
+2025-06-06 00:04:36,429 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 00:04:36,430 - Search - INFO - Обработан канал: https://www.youtube.com/@mansur_halalinvest -> Not found
+2025-06-06 00:04:39,080 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 00:04:39,227 - __main__ - ERROR - Ошибка сохранения в Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-06-06 00:04:49,495 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:04:49,641 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 00:04:49,773 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 00:04:56,743 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@invest100rubles

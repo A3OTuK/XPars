@@ -1,0 +1,24 @@
+2025-06-05 23:06:39,739 - __main__ - INFO - Инициализация XPARSER v0.92
+2025-06-05 23:06:39,739 - __main__ - INFO - Файл логов: D:\Github\XPars\logs\debug_20250605_230639.txt
+2025-06-05 23:06:41,247 - __main__ - INFO - Режим работы: скрипт
+2025-06-05 23:06:42,971 - __main__ - INFO - Результаты будут сохраняться в: D:\Github\XPars\results\results_20250605_230641.xlsx
+2025-06-05 23:06:43,172 - __main__ - INFO - XPARSER v0.92 готов к работе
+2025-06-05 23:06:54,237 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-05 23:06:56,426 - __main__ - INFO - Установлено количество потоков: 3
+2025-06-05 23:06:56,427 - __main__ - INFO - Запуск поиска по запросу: Инвестиции
+2025-06-05 23:06:56,428 - __main__ - INFO - Используется потоков: 3
+2025-06-05 23:06:56,429 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-05 23:06:56,445 - Search - INFO - Запуск непрерывного поиска по запросу: 'Инвестиции'
+2025-06-05 23:06:56,445 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-05 23:06:56,445 - Search - ERROR - Ошибка инициализации ChromeDriver: ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:06:56,446 - Search - ERROR - Ошибка поиска (попытка 1): ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:06:58,446 - Search - INFO - Поиск каналов (попытка 2): 'Инвестиции'
+2025-06-05 23:06:58,447 - Search - ERROR - Ошибка инициализации ChromeDriver: ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:06:58,447 - Search - ERROR - Ошибка поиска (попытка 2): ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:07:00,448 - Search - INFO - Поиск каналов (попытка 3): 'Инвестиции'
+2025-06-05 23:07:00,448 - Search - ERROR - Ошибка инициализации ChromeDriver: ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:07:00,449 - Search - ERROR - Ошибка поиска (попытка 3): ChromeDriverManager.__init__() got an unexpected keyword argument 'print_first_line'
+2025-06-05 23:07:00,449 - Search - WARNING - Каналы не найдены, повтор через 10 сек
+2025-06-05 23:07:06,143 - Search - INFO - Поиск остановлен по команде пользователя
+2025-06-05 23:07:06,144 - __main__ - INFO - Поиск остановлен пользователем
+2025-06-05 23:07:06,150 - __main__ - ERROR - Ошибка закрытия Excel файла: At least one sheet must be visible

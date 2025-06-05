@@ -1,0 +1,11 @@
+2025-06-05 23:26:23,193 - __main__ - CRITICAL - Критическая ошибка: 'XParserApp' object has no attribute 'title_font'
+Traceback (most recent call last):
+  File "D:\Github\XPars\main.py", line 392, in <module>
+    app = XParserApp(root)
+  File "D:\Github\XPars\main.py", line 69, in __init__
+    self._setup_ui()
+    ~~~~~~~~~~~~~~^^
+  File "D:\Github\XPars\main.py", line 195, in _setup_ui
+    font=self.title_font,
+         ^^^^^^^^^^^^^^^
+AttributeError: 'XParserApp' object has no attribute 'title_font'

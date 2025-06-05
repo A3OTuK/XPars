@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, font as tkfont, messagebox
+from tkinter import ttk, font as tkfont, messagebox, scrolledtext
 from Search import YouTubeSearcher
 from Update import Updater
 from datetime import datetime
@@ -8,23 +8,31 @@ import logging
 import sys
 import threading
 import queue
-from tkinter.scrolledtext import ScrolledText
+import pandas as pd
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.91"
+APP_VERSION = "0.92"
 
-# Настройка логирования
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('debug.log', mode='w', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
+# Настройка глобального логгера
+def setup_logging():
+    os.makedirs("logs", exist_ok=True)
+    log_file = f"logs/debug_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file, encoding='utf-8'),
+            logging.StreamHandler()
+        ]
+    )
+    logging.getLogger('WDM').setLevel(logging.INFO)
+    return log_file
+
+# Инициализация логгера и сохранение пути к лог-файлу
+log_file = setup_logging()
 logger = logging.getLogger(__name__)
-
 
 class TextHandler(logging.Handler):
     def __init__(self, text_widget):
@@ -38,83 +46,77 @@ class TextHandler(logging.Handler):
         self.text_widget.see("end")
         self.text_widget.config(state="disabled")
 
-
 class XParserApp:
     def __init__(self, root):
         self.root = root
         self.root.title(f"{APP_NAME} v{APP_VERSION}")
 
-        # Проверка режима работы
-        self.is_frozen = getattr(sys, 'frozen', False)
-        logger.info(f"Режим работы: {'EXE' if self.is_frozen else 'скрипт'}")
-
-        # Инициализация модуля обновлений
-        self.updater = Updater(current_version=APP_VERSION)
-
-        # Переменные состояния
-        self.search_tags = ""
-        self.search_running = False
-        self.search_thread = None
-        self.thread_count = 3
-        self.result_queue = queue.Queue()
-        self.searcher = None
-
-        # Настройка шрифтов
+        # Шрифты
         self.main_font = tkfont.Font(family="Helvetica", size=12)
         self.button_font = tkfont.Font(family="Helvetica", size=12, weight="bold")
         self.title_font = tkfont.Font(family="Helvetica", size=14, weight="bold")
 
-        # Создание интерфейса
+        # Состояние
+        self.search_running = False
+        self.search_thread = None
+        self.searcher = None
+        self.result_queue = queue.Queue()
+        self.excel_path = None
+        self.thread_count = 3
+
+        # Инициализация интерфейса
         self._setup_ui()
         self._center_window()
         self._setup_logging()
-
-        # Запуск обработчика очереди
         self.root.after(100, self._process_result_queue)
+
         logger.info(f"{APP_NAME} v{APP_VERSION} запущен")
 
+    def _setup_logging(self):
+        """Настройка вывода логов в интерфейс"""
+        if hasattr(self, 'log_text'):
+            text_handler = TextHandler(self.log_text)
+            text_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+            logger.addHandler(text_handler)
+            logging.getLogger('WDM').addHandler(text_handler)
+
     def _setup_ui(self):
-        """Настройка интерфейса"""
+        """Инициализация пользовательского интерфейса"""
         self.tab_control = ttk.Notebook(self.root)
 
         # Вкладка поиска
-        tab_frame = ttk.Frame(self.tab_control)
-        self.tab_control.add(tab_frame, text="Поиск")
-        frame = ttk.Frame(tab_frame)
-        frame.pack(expand=True, fill="both", padx=20, pady=20)
+        search_frame = ttk.Frame(self.tab_control)
+        self.tab_control.add(search_frame, text="Поиск")
 
         # Панель управления
-        control_frame = ttk.Frame(frame)
-        control_frame.pack(fill="x", pady=(0, 10))
+        control_frame = ttk.Frame(search_frame)
+        control_frame.pack(fill="x", pady=10)
 
-        # Кнопки управления
-        btn_frame = ttk.Frame(control_frame)
-        btn_frame.pack(side="left")
-
+        # Кнопки
         self.search_btn = tk.Button(
-            btn_frame,
+            control_frame,
             text="НАЧАТЬ ПОИСК",
             font=self.button_font,
-            width=15,
+            width=20,
             height=2,
             bg="black",
             fg="white",
             command=self.start_search
         )
-        self.search_btn.pack(side="left", padx=(0, 10))
+        self.search_btn.pack(side="left", padx=5)
 
         self.stop_btn = tk.Button(
-            btn_frame,
+            control_frame,
             text="ОСТАНОВИТЬ",
             font=self.button_font,
-            width=15,
+            width=20,
             height=2,
             bg="#ff4444",
             fg="white",
             state="disabled",
             command=self.stop_search
         )
-        self.stop_btn.pack(side="left")
+        self.stop_btn.pack(side="left", padx=5)
 
         # Настройка потоков
         thread_frame = ttk.Frame(control_frame)
@@ -134,84 +136,71 @@ class XParserApp:
         self.thread_spinbox.delete(0, "end")
         self.thread_spinbox.insert(0, "3")
 
-        # Область результатов
-        results_frame = ttk.Frame(frame)
-        results_frame.pack(fill="both", expand=True)
-
-        self.results_text = ScrolledText(
-            results_frame,
+        # Текстовые поля
+        self.results_text = scrolledtext.ScrolledText(
+            search_frame,
             wrap=tk.WORD,
-            height=12,
-            padx=10,
-            pady=10,
+            height=15,
             font=tkfont.Font(size=10)
         )
-        self.results_text.pack(fill="both", expand=True)
+        self.results_text.pack(fill="both", expand=True, padx=10, pady=5)
         self.results_text.config(state="disabled")
 
-        # Логи
-        log_frame = ttk.Frame(frame)
-        log_frame.pack(fill="both", expand=True)
-
-        self.log_text = ScrolledText(
-            log_frame,
+        # Текстовое поле для логов
+        self.log_text = scrolledtext.ScrolledText(
+            search_frame,
             wrap=tk.WORD,
             height=8,
-            padx=10,
-            pady=10,
-            font=tkfont.Font(size=10),
-            state="disabled"
+            font=tkfont.Font(size=10)
         )
-        self.log_text.pack(fill="both", expand=True)
+        self.log_text.pack(fill="both", expand=True, padx=10, pady=5)
+        self.log_text.config(state="disabled")
 
         # Вкладка конфигурации
-        self._setup_config_tab()
+        config_frame = ttk.Frame(self.tab_control)
+        self.tab_control.add(config_frame, text="Конфигурация")
 
-        # Вкладка о программе
-        self._setup_about_tab()
-
-        self.tab_control.pack(expand=1, fill="both")
-
-    def _setup_config_tab(self):
-        """Вкладка конфигурации"""
-        tab_frame = ttk.Frame(self.tab_control)
-        self.tab_control.add(tab_frame, text="Конфигурация")
-
-        frame = ttk.Frame(tab_frame)
-        frame.pack(expand=True, fill="both", padx=20, pady=20)
-
-        ttk.Label(frame, text="Теги для поиска (через запятую):", font=self.main_font).pack(pady=(0, 5))
+        ttk.Label(config_frame, text="Теги для поиска (через запятую):",
+                  font=self.main_font).pack(pady=(10, 5))
 
         self.tags_entry = tk.Text(
-            frame,
+            config_frame,
             height=5,
-            width=40,
+            width=50,
             wrap=tk.WORD,
-            padx=10,
-            pady=10,
             font=self.main_font
         )
-        self.tags_entry.pack(fill="x")
+        self.tags_entry.pack(padx=10, pady=5)
 
         ttk.Button(
-            frame,
+            config_frame,
             text="Сохранить настройки",
             command=self.save_config
-        ).pack(pady=20)
+        ).pack(pady=10)
 
-    def _setup_about_tab(self):
-        """Вкладка о программе"""
-        tab_frame = ttk.Frame(self.tab_control)
-        self.tab_control.add(tab_frame, text="О программе")
+        # Вкладка "О программе"
+        about_frame = ttk.Frame(self.tab_control)
+        self.tab_control.add(about_frame, text="О программе")
 
-        frame = ttk.Frame(tab_frame)
-        frame.pack(expand=True, fill="both", padx=20, pady=20)
+        content_frame = ttk.Frame(about_frame)
+        content_frame.pack(expand=True, fill="both", padx=20, pady=20)
 
-        ttk.Label(frame, text=f"{APP_NAME}", font=self.title_font, justify="center").pack(pady=5)
-        ttk.Label(frame, text=f"Версия: {APP_VERSION}", font=self.main_font, justify="center").pack(pady=5)
+        ttk.Label(
+            content_frame,
+            text=f"{APP_NAME}",
+            font=self.title_font,
+            justify="center"
+        ).pack(pady=5)
+
+        ttk.Label(
+            content_frame,
+            text=f"Версия: {APP_VERSION}",
+            font=self.main_font,
+            justify="center"
+        ).pack(pady=5)
 
         tk.Button(
-            frame,
+            content_frame,
             text="ПРОВЕРИТЬ ОБНОВЛЕНИЯ",
             font=self.button_font,
             width=25,
@@ -222,24 +211,29 @@ class XParserApp:
         ).pack(pady=20)
 
         ttk.Label(
-            frame,
+            content_frame,
             text="Автоматический парсер YouTube каналов\nс извлечением Telegram ссылок",
             font=tkfont.Font(size=10),
             justify="center"
         ).pack(pady=10)
 
         ttk.Label(
-            frame,
+            content_frame,
             text="© 2025\nA3otuk",
             font=tkfont.Font(size=9),
             justify="center"
         ).pack(pady=5)
 
-    def _setup_logging(self):
-        """Настройка вывода логов в интерфейс"""
-        text_handler = TextHandler(self.log_text)
-        text_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-        logger.addHandler(text_handler)
+        self.tab_control.pack(expand=1, fill="both")
+
+    def _center_window(self):
+        """Центрирование окна на экране"""
+        self.root.update_idletasks()
+        width = 800
+        height = 600
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (height // 2)
+        self.root.geometry(f'{width}x{height}+{x}+{y}')
 
     def _process_result_queue(self):
         """Обработка очереди результатов"""
@@ -247,37 +241,85 @@ class XParserApp:
             while True:
                 result = self.result_queue.get_nowait()
                 self._display_result(result)
-                self._save_to_file(result)
+                self._save_to_excel(result)
         except queue.Empty:
             pass
         finally:
             self.root.after(100, self._process_result_queue)
 
     def _display_result(self, result):
-        """Отображение результата"""
+        """Отображение результата в интерфейсе"""
         self.results_text.config(state="normal")
         self.results_text.insert("end", f"[{datetime.now().strftime('%H:%M:%S')}] YouTube: {result['youtube_url']}\n")
         self.results_text.insert("end", f"Telegram: {result['telegram_url']}\n\n")
         self.results_text.see("end")
         self.results_text.config(state="disabled")
 
-    def _save_to_file(self, result):
-        """Сохранение результата в файл"""
+    def _save_to_excel(self, result):
+        """Сохранение результатов в Excel файл"""
         try:
             os.makedirs("results", exist_ok=True)
-            filename = f"results/results_{datetime.now().strftime('%Y%m%d')}.txt"
 
-            with open(filename, "a", encoding="utf-8") as f:
-                f.write(f"[{datetime.now().strftime('%H:%M:%S')}] YouTube: {result['youtube_url']}\n")
-                f.write(f"Telegram: {result['telegram_url']}\n\n")
+            # Если файл еще не создан
+            if self.excel_path is None:
+                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                self.excel_path = f"results/results_{timestamp}.xlsx"
+
+                # Создаем новый DataFrame
+                df = pd.DataFrame([{
+                    'YouTube URL': result['youtube_url'],
+                    'Telegram URL': result['telegram_url'],
+                    'Дата': datetime.now().strftime('%Y-%m-%d'),
+                    'Время': datetime.now().strftime('%H:%M:%S')
+                }])
+
+                # Сохраняем в новый файл
+                df.to_excel(
+                    self.excel_path,
+                    sheet_name='Результаты',
+                    index=False,
+                    engine='openpyxl'
+                )
+                logger.info(f"Создан новый Excel файл: {self.excel_path}")
+            else:
+                # Если файл уже существует, читаем его и дописываем данные
+                try:
+                    # Читаем существующие данные
+                    existing_df = pd.read_excel(self.excel_path, engine='openpyxl')
+
+                    # Создаем DataFrame с новыми данными
+                    new_data = {
+                        'YouTube URL': result['youtube_url'],
+                        'Telegram URL': result['telegram_url'],
+                        'Дата': datetime.now().strftime('%Y-%m-%d'),
+                        'Время': datetime.now().strftime('%H:%M:%S')
+                    }
+
+                    # Объединяем старые и новые данные
+                    updated_df = pd.concat([existing_df, pd.DataFrame([new_data])], ignore_index=True)
+
+                    # Перезаписываем файл с обновленными данными
+                    updated_df.to_excel(
+                        self.excel_path,
+                        sheet_name='Результаты',
+                        index=False,
+                        engine='openpyxl'
+                    )
+                except Exception as e:
+                    logger.error(f"Ошибка при дописывании в Excel: {str(e)}")
+                    # Если не удалось дописать, создаем новый файл
+                    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                    self.excel_path = f"results/results_{timestamp}.xlsx"
+                    self._save_to_excel(result)  # Рекурсивный вызов для создания нового файла
+
         except Exception as e:
-            logger.error(f"Ошибка сохранения: {str(e)}")
+            logger.error(f"Ошибка сохранения в Excel: {str(e)}")
 
     def _update_thread_count(self):
         """Обновление количества потоков"""
         try:
             self.thread_count = int(self.thread_spinbox.get())
-            if self.thread_count < 1 or self.thread_count > 10:
+            if not 1 <= self.thread_count <= 10:
                 raise ValueError
         except ValueError:
             messagebox.showerror("Ошибка", "Введите число от 1 до 10")
@@ -290,25 +332,21 @@ class XParserApp:
         if self.search_running:
             return
 
+        query = self.tags_entry.get("1.0", "end-1c").strip()
+        if not query:
+            messagebox.showwarning("Ошибка", "Введите теги для поиска")
+            return
+
         self.search_running = True
         self.search_btn.config(state="disabled")
         self.stop_btn.config(state="normal")
         self.results_text.config(state="normal")
-        self.results_text.delete(1.0, tk.END)
+        self.results_text.delete(1.0, "end")
         self.results_text.config(state="disabled")
-
-        search_query = self.tags_entry.get("1.0", tk.END).strip()
-        if not search_query:
-            messagebox.showwarning("Ошибка", "Введите теги для поиска")
-            self.stop_search()
-            return
+        self.excel_path = None  # Сброс для создания нового файла
 
         self._update_thread_count()
 
-        logger.info(f"Запуск поиска по запросу: {search_query}")
-        logger.info(f"Используется потоков: {self.thread_count}")
-
-        # Создаем поисковик с callback'ом
         self.searcher = YouTubeSearcher(
             result_callback=lambda y, t: self.result_queue.put({
                 'youtube_url': y,
@@ -317,13 +355,14 @@ class XParserApp:
             thread_count=self.thread_count
         )
 
-        # Запускаем в отдельном потоке
         self.search_thread = threading.Thread(
             target=self.searcher.continuous_search,
-            args=(search_query,),
+            args=(query,),
             daemon=True
         )
         self.search_thread.start()
+
+        logger.info(f"Запущен поиск: '{query}'")
 
     def stop_search(self):
         """Остановка поиска"""
@@ -337,37 +376,25 @@ class XParserApp:
         if self.searcher:
             self.searcher.stop()
 
-        logger.info("Поиск остановлен пользователем")
+        logger.info("Поиск остановлен")
 
     def save_config(self):
         """Сохранение настроек"""
         try:
-            self.search_tags = self.tags_entry.get("1.0", tk.END).strip()
-            if not self.search_tags:
+            tags = self.tags_entry.get("1.0", "end-1c").strip()
+            if not tags:
                 raise ValueError("Теги не могут быть пустыми")
 
             messagebox.showinfo("Сохранено", "Настройки успешно сохранены!")
-            logger.info(f"Сохранены теги: '{self.search_tags[:20]}...'")
+            logger.info(f"Сохранены теги: '{tags[:50]}...'")
         except ValueError as e:
-            logger.error(f"Ошибка валидации: {str(e)}")
             messagebox.showerror("Ошибка", str(e))
-        except Exception as e:
-            logger.error(f"Ошибка сохранения: {str(e)}", exc_info=True)
-            messagebox.showerror("Ошибка", f"Неизвестная ошибка: {str(e)}")
+            logger.error(f"Ошибка сохранения: {str(e)}")
 
     def check_for_updates(self):
         """Проверка обновлений"""
+        self.updater = Updater(current_version=APP_VERSION)
         self.updater.show_update_dialog(self.root)
-
-    def _center_window(self):
-        """Центрирование окна"""
-        self.root.update_idletasks()
-        width = self.root.winfo_width()
-        height = self.root.winfo_height()
-        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.root.winfo_screenheight() // 2) - (height // 2)
-        self.root.geometry(f'+{x}+{y}')
-
 
 if __name__ == "__main__":
     try:
@@ -375,5 +402,5 @@ if __name__ == "__main__":
         app = XParserApp(root)
         root.mainloop()
     except Exception as e:
-        logger.critical(f"FATAL ERROR: {str(e)}", exc_info=True)
-        messagebox.showerror("Critical Error", f"Error: {str(e)}\nSee debug.log")
+        logger.critical(f"Критическая ошибка: {str(e)}", exc_info=True)
+        messagebox.showerror("Ошибка", f"Программа завершена с ошибкой:\n{str(e)}\n\nПодробности в логах: {log_file}")

@@ -1,0 +1,39 @@
+2025-06-05 23:45:15,765 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-05 23:45:26,955 - __main__ - INFO - Сохранены теги: 'Dota...'
+2025-06-05 23:45:29,931 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-05 23:45:29,945 - Search - INFO - Поиск каналов (попытка 1): 'Dota'
+2025-06-05 23:45:29,946 - __main__ - INFO - Запущен поиск: 'Dota'
+2025-06-05 23:45:29,946 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:45:35,184 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:45:35,339 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:45:35,493 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:45:56,143 - Search - INFO - Найдено каналов: 80
+2025-06-05 23:45:58,666 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:46:00,985 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:46:01,156 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:46:01,323 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:46:04,828 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@A3A4TOSTOBOY1
+2025-06-05 23:46:12,456 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/AzaDoter
+2025-06-05 23:46:12,457 - Search - INFO - Обработан канал: https://www.youtube.com/@A3A4TOSTOBOY1 -> https://t.me/AzaDoter
+2025-06-05 23:46:14,749 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:46:15,353 - __main__ - INFO - Создан новый Excel файл: results/results_20250605_234614.xlsx
+2025-06-05 23:46:15,401 - __main__ - ERROR - Ошибка сохранения в Excel: 'OpenpyxlWriter' object has no attribute 'save'
+2025-06-05 23:46:19,193 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:46:19,339 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:46:19,494 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:46:20,923 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dota2prodigy
+2025-06-05 23:46:58,867 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:46:58,868 - Search - INFO - Обработан канал: https://www.youtube.com/@dota2prodigy -> Not found
+2025-06-05 23:47:01,411 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:47:01,497 - __main__ - INFO - Создан новый Excel файл: results/results_20250605_234701.xlsx
+2025-06-05 23:47:01,503 - __main__ - ERROR - Ошибка сохранения в Excel: 'OpenpyxlWriter' object has no attribute 'save'
+2025-06-05 23:47:03,917 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:47:04,066 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:47:04,202 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:47:05,064 - Search - INFO - Поиск остановлен по команде пользователя
+2025-06-05 23:47:05,064 - __main__ - INFO - Поиск остановлен
+2025-06-05 23:47:06,293 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@shisp
+2025-06-05 23:47:21,549 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/shisp_bets
+2025-06-05 23:47:21,549 - Search - INFO - Обработан канал: https://www.youtube.com/@shisp -> https://t.me/shisp_bets
+2025-06-05 23:47:24,205 - __main__ - INFO - Создан новый Excel файл: results/results_20250605_234724.xlsx
+2025-06-05 23:47:24,212 - __main__ - ERROR - Ошибка сохранения в Excel: 'OpenpyxlWriter' object has no attribute 'save'

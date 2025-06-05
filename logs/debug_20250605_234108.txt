@@ -1,0 +1,18 @@
+2025-06-05 23:41:08,847 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-05 23:41:18,866 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-05 23:41:20,548 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-05 23:41:20,548 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-05 23:41:20,548 - __main__ - INFO - Запущен поиск: 'Инвестиции'
+2025-06-05 23:41:20,549 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:41:22,477 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:41:22,638 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:41:22,777 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:41:44,907 - Search - INFO - Найдено каналов: 79
+2025-06-05 23:41:47,502 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:41:50,103 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:41:50,253 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:41:50,396 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:41:52,806 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@proscalping-2720
+2025-06-05 23:42:20,077 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:42:20,077 - Search - INFO - Обработан канал: https://www.youtube.com/@proscalping-2720 -> Not found
+2025-06-05 23:42:24,392 - WDM - INFO - ====== WebDriver manager ======

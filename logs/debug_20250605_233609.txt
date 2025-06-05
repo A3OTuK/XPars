@@ -1,0 +1,47 @@
+2025-06-05 23:36:09,933 - __main__ - INFO - XPARSER v0.92 запущен
+2025-06-05 23:36:24,802 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-05 23:36:26,930 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-05 23:36:27,555 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-05 23:36:27,556 - __main__ - INFO - Запущен поиск: 'Инвестиции'
+2025-06-05 23:36:27,556 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:36:33,463 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:36:33,683 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:36:33,821 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:37:02,258 - Search - INFO - Найдено каналов: 76
+2025-06-05 23:37:05,577 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:37:07,919 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:37:08,064 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:37:08,204 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:37:09,913 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@nikolaysivolap7005
+2025-06-05 23:37:34,898 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:37:34,898 - Search - INFO - Обработан канал: https://www.youtube.com/@nikolaysivolap7005 -> Not found
+2025-06-05 23:37:38,284 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:37:40,017 - __main__ - ERROR - Ошибка сохранения в Excel: Invalid file path or buffer object type: <class 'NoneType'>
+2025-06-05 23:37:41,441 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:37:41,672 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:37:41,846 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:37:44,171 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@investment_in_future
+2025-06-05 23:38:06,140 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:38:06,141 - Search - INFO - Обработан канал: https://www.youtube.com/@investment_in_future -> Not found
+2025-06-05 23:38:08,643 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:38:08,753 - __main__ - ERROR - Ошибка сохранения в Excel: Invalid file path or buffer object type: <class 'NoneType'>
+2025-06-05 23:38:10,236 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:38:10,375 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:38:10,510 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:38:11,954 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dimatolstyakov
+2025-06-05 23:38:21,237 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+PkEp1baqxJ0zYTNi
+2025-06-05 23:38:21,237 - Search - INFO - Обработан канал: https://www.youtube.com/@dimatolstyakov -> https://t.me/+PkEp1baqxJ0zYTNi
+2025-06-05 23:38:25,656 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:38:25,752 - __main__ - ERROR - Ошибка сохранения в Excel: Invalid file path or buffer object type: <class 'NoneType'>
+2025-06-05 23:38:27,842 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:38:28,000 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:38:28,168 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:38:30,075 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@tradeinsider_official
+2025-06-05 23:39:02,801 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-05 23:39:02,801 - Search - INFO - Обработан канал: https://www.youtube.com/@tradeinsider_official -> Not found
+2025-06-05 23:39:06,371 - WDM - INFO - ====== WebDriver manager ======
+2025-06-05 23:39:06,452 - __main__ - ERROR - Ошибка сохранения в Excel: Invalid file path or buffer object type: <class 'NoneType'>
+2025-06-05 23:39:08,177 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:39:08,323 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-05 23:39:08,475 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+2025-06-05 23:39:10,478 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Invest_in_anything
