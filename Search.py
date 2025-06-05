@@ -23,26 +23,28 @@ logger = logging.getLogger(__name__)
 
 
 class YouTubeSearcher:
-    def __init__(self):
-        # Инициализация статистики
+    def __init__(self, result_callback=None, thread_count=3):
+        """
+        Инициализация поисковика
+
+        :param result_callback: функция для обработки результатов (youtube_url, telegram_url)
+        :param thread_count: количество рабочих потоков
+        """
         self.stats = {
             "total_queries": 0,
             "total_channels_found": 0,
             "last_search_time": None
         }
-
-        # Для хранения найденных каналов
         self.found_channels = set()
         self.channels_lock = threading.Lock()
-
-        # Очередь для распределения работы между потоками
+        self.stop_event = threading.Event()
+        self.result_callback = result_callback
+        self.thread_count = thread_count
         self.work_queue = queue.Queue()
-
-        # Инициализация рабочей директории
         self._init_workspace()
 
     def _init_workspace(self):
-        """Создает директорию для результатов"""
+        """Инициализация рабочей директории"""
         if getattr(sys, 'frozen', False):
             base_dir = os.path.dirname(sys.executable)
         else:
@@ -59,43 +61,174 @@ class YouTubeSearcher:
             f"Последний поиск: {self.stats['last_search_time']}"
         )
 
-    def save_results_to_excel(self, query, results):
-        """Сохраняет результаты в Excel файл"""
+    def continuous_search(self, query):
+        """
+        Непрерывный поиск каналов с немедленной обработкой
+
+        :param query: поисковый запрос
+        """
+        logger.info(f"Начало непрерывного поиска по запросу: {query}")
+
+        with self.channels_lock:
+            self.stats["total_queries"] += 1
+            self.stats["last_search_time"] = time.strftime("%Y-%m-%d %H:%M:%S")
+
+        while not self.stop_event.is_set():
+            try:
+                # Получаем новые каналы
+                channels = self.get_channel_links(query)
+                if not channels or self.stop_event.is_set():
+                    time.sleep(5)  # Пауза перед следующей попыткой
+                    continue
+
+                # Добавляем в очередь только новые каналы
+                new_channels = []
+                with self.channels_lock:
+                    new_channels = [c for c in channels if c not in self.found_channels]
+                    if new_channels:
+                        self.found_channels.update(new_channels)
+                        self.stats["total_channels_found"] += len(new_channels)
+
+                # Добавляем в очередь на обработку
+                for channel in new_channels:
+                    if self.stop_event.is_set():
+                        break
+                    self.work_queue.put(channel)
+
+                # Запускаем потоки обработки
+                self._start_processing_threads()
+
+                # Небольшая пауза перед следующим поиском
+                time.sleep(10)
+
+            except Exception as e:
+                logger.error(f"Ошибка в continuous_search: {str(e)}")
+                if not self.stop_event.is_set():
+                    time.sleep(30)  # Длинная пауза при ошибке
+
+    def _start_processing_threads(self):
+        """Запускает потоки для обработки каналов"""
+        threads = []
+        for _ in range(min(self.thread_count, self.work_queue.qsize())):
+            t = threading.Thread(
+                target=self._process_channels_worker,
+                daemon=True
+            )
+            t.start()
+            threads.append(t)
+
+        # Ожидаем завершения всех потоков
+        for t in threads:
+            t.join()
+
+    def _process_channels_worker(self):
+        """Рабочая функция для потоков обработки"""
+        while not self.stop_event.is_set():
+            try:
+                channel_url = self.work_queue.get_nowait()
+                self._process_single_channel(channel_url)
+                self.work_queue.task_done()
+            except queue.Empty:
+                break
+
+    def _process_single_channel(self, channel_url):
+        """Обработка одного канала"""
         try:
-            if not results:
-                return None
-
-            filename = f"{query[:30]}_{datetime.now().strftime('%Y%m%d')}.xlsx"
-            file_path = os.path.join(self.results_dir, filename)
-
-            df = pd.DataFrame(results)
-            df.to_excel(file_path, index=False, engine='openpyxl')
-
-            return file_path
-        except Exception as e:
-            logger.error(f"Ошибка сохранения: {str(e)}")
-            return None
-
-    def parse_telegram_links(self, file_path):
-        """Парсит Telegram ссылки для всех каналов в файле"""
-        try:
+            # Парсим Telegram ссылку
             driver = self.setup_driver()
-            from TGPars import TelegramParser  # Локальный импорт для избежания циклических зависимостей
-            parser = TelegramParser(driver)
+            try:
+                from TGPars import TelegramParser
+                parser = TelegramParser(driver)
+                tg_link = parser.parse_telegram_link(channel_url)
 
-            df = pd.read_excel(file_path)
-            for index, row in df.iterrows():
-                if pd.isna(row['Telegram']) or row['Telegram'] == 'Not parsed yet':
-                    tg_link = parser.parse_telegram_link(row['YouTube'])
-                    df.at[index, 'Telegram'] = tg_link if tg_link else 'Not found'
+                # Вызываем callback если он есть
+                if self.result_callback:
+                    self.result_callback(channel_url, tg_link)
 
-            df.to_excel(file_path, index=False, engine='openpyxl')
-        finally:
-            if driver:
+                # Логируем результат
+                logger.info(f"Обработан канал: {channel_url}")
+                if tg_link:
+                    logger.info(f"Найдена Telegram ссылка: {tg_link}")
+
+            finally:
                 driver.quit()
 
+        except Exception as e:
+            logger.error(f"Ошибка обработки канала {channel_url}: {str(e)}")
+
+    def get_channel_links(self, search_query, max_retries=3):
+        """
+        Поиск каналов YouTube по запросу
+
+        :param search_query: поисковый запрос
+        :param max_retries: максимальное количество попыток
+        :return: список найденных каналов
+        """
+        for attempt in range(max_retries):
+            driver = None
+            try:
+                if self.stop_event.is_set():
+                    return []
+
+                driver = self.setup_driver()
+                search_url = f"https://www.youtube.com/results?search_query={search_query.replace(' ', '+')}=&sp=EgIQAg%253D%253D"
+                driver.get(search_url)
+
+                WebDriverWait(driver, 20).until(
+                    EC.presence_of_element_located((By.ID, "content"))
+                )
+
+                self._scroll_to_bottom(driver)
+
+                links = WebDriverWait(driver, 10).until(
+                    EC.presence_of_all_elements_located((By.TAG_NAME, "a"))
+                )
+                channel_links = set()
+
+                for link in links:
+                    if self.stop_event.is_set():
+                        break
+
+                    try:
+                        href = link.get_attribute("href")
+                        if href and ("/channel/" in href or "/user/" in href or "/@" in href):
+                            # Нормализуем URL канала
+                            if "/@" in href:
+                                channel_links.add(href.split('?')[0])
+                            elif "/channel/" in href or "/user/" in href:
+                                base_url = href.split('/featured')[0].split('/videos')[0]
+                                channel_links.add(base_url)
+                    except Exception as e:
+                        logger.debug(f"Ошибка обработки ссылки: {str(e)}")
+                        continue
+
+                return list(channel_links)
+
+            except Exception as e:
+                logger.error(f"Попытка {attempt + 1} не удалась: {str(e)}")
+                if attempt == max_retries - 1:
+                    return []
+                time.sleep(2)
+                continue
+
+            finally:
+                if driver:
+                    driver.quit()
+        return []
+
+    def _scroll_to_bottom(self, driver):
+        """Прокрутка страницы до конца"""
+        last_height = driver.execute_script("return document.documentElement.scrollHeight")
+        while not self.stop_event.is_set():
+            driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
+            time.sleep(2)
+            new_height = driver.execute_script("return document.documentElement.scrollHeight")
+            if new_height == last_height:
+                break
+            last_height = new_height
+
     def setup_driver(self):
-        """Настраивает и возвращает Chrome драйвер"""
+        """Настройка и создание Chrome драйвера"""
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
@@ -109,131 +242,7 @@ class YouTubeSearcher:
         service = Service(ChromeDriverManager().install())
         return webdriver.Chrome(service=service, options=chrome_options)
 
-    def scroll_to_bottom(self, driver):
-        """Прокручивает страницу до конца"""
-        last_height = driver.execute_script("return document.documentElement.scrollHeight")
-        while True:
-            driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
-            time.sleep(2)
-            new_height = driver.execute_script("return document.documentElement.scrollHeight")
-            if new_height == last_height:
-                break
-            last_height = new_height
-
-    def get_channel_links(self, search_query, max_retries=3):
-        """Ищет каналы YouTube по запросу"""
-        for attempt in range(max_retries):
-            driver = None
-            try:
-                driver = self.setup_driver()
-                search_url = f"https://www.youtube.com/results?search_query={search_query.replace(' ', '+')}=&sp=EgQIBRAB"
-                driver.get(search_url)
-
-                WebDriverWait(driver, 20).until(
-                    EC.presence_of_element_located((By.ID, "content"))
-                )
-
-                self.scroll_to_bottom(driver)
-
-                links = WebDriverWait(driver, 10).until(
-                    EC.presence_of_all_elements_located((By.TAG_NAME, "a"))
-                )
-                channel_links = set()
-
-                for link in links:
-                    try:
-                        href = link.get_attribute("href")
-                        if href and "@" in href:
-                            channel_links.add(href)
-                            logger.info(f"Найден канал: {href}")
-                    except Exception as e:
-                        logger.error(f"Ошибка при обработке ссылки: {str(e)}")
-                        continue
-
-                return list(channel_links)
-            except Exception as e:
-                logger.error(f"Попытка {attempt + 1} не удалась: {str(e)}")
-                if attempt == max_retries - 1:
-                    return []
-                time.sleep(2)
-                continue
-            finally:
-                if driver:
-                    driver.quit()
-
-    def search(self, query, max_results=10):
-        """Основной метод поиска с многопоточной обработкой"""
-        # Обновляем статистику
-        with self.channels_lock:
-            self.stats["total_queries"] += 1
-            self.stats["last_search_time"] = time.strftime("%Y-%m-%d %H:%M:%S")
-
-        # Получаем все каналы по запросу
-        all_channels = self.get_channel_links(query)
-
-        # Фильтруем только новые каналы
-        new_channels = []
-        with self.channels_lock:
-            new_channels = [channel for channel in all_channels if channel not in self.found_channels]
-            if new_channels:
-                self.found_channels.update(new_channels)
-                self.stats["total_channels_found"] += len(new_channels)
-
-        # Ограничиваем количество результатов
-        channels_to_process = new_channels[:max_results]
-        if not channels_to_process:
-            return []
-
-        # Добавляем каналы в очередь для обработки
-        for channel in channels_to_process:
-            self.work_queue.put(channel)
-
-        # Создаем и запускаем потоки
-        results = []
-        result_lock = threading.Lock()
-        threads = []
-
-        for _ in range(3):  # 3 рабочих потока
-            t = threading.Thread(
-                target=self._process_channel_worker,
-                args=(result_lock, results),
-                daemon=True
-            )
-            t.start()
-            threads.append(t)
-
-        # Ожидаем завершения всех потоков
-        for t in threads:
-            t.join()
-
-        # Сохраняем результаты
-        file_path = self.save_results_to_excel(query, results)
-        if file_path:
-            self.parse_telegram_links(file_path)
-
-        return results
-
-    def _process_channel_worker(self, result_lock, results):
-        """Рабочая функция для потоков"""
-        while not self.work_queue.empty():
-            try:
-                channel_url = self.work_queue.get_nowait()
-
-                # Обработка канала и поиск Telegram
-                driver = self.setup_driver()
-                try:
-                    from TGPars import TelegramParser
-                    parser = TelegramParser(driver)
-                    tg_link = parser.parse_telegram_link(channel_url)
-
-                    with result_lock:
-                        results.append({
-                            "YouTube": channel_url,
-                            "Telegram": tg_link if tg_link else "Not found"
-                        })
-                finally:
-                    driver.quit()
-
-                self.work_queue.task_done()
-            except queue.Empty:
-                break
+    def stop(self):
+        """Остановка всех операций поиска"""
+        self.stop_event.set()
+        logger.info("Получена команда остановки поиска")
