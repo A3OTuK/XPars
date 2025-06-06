@@ -13,7 +13,7 @@ from openpyxl import Workbook, load_workbook
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.93"
+APP_VERSION = "0.94"
 
 # Настройка глобального логгера
 def setup_logging():
@@ -64,6 +64,7 @@ class XParserApp:
         self.result_queue = queue.Queue()
         self.excel_path = None
         self.thread_count = 3
+        self.found_count = 0  # Счетчик найденных Telegram ссылок
 
         # Инициализация интерфейса
         self._setup_ui()
@@ -88,14 +89,18 @@ class XParserApp:
         # Вкладка поиска
         search_frame = ttk.Frame(self.tab_control)
         self.tab_control.add(search_frame, text="Поиск")
+        self.tab_control.pack(expand=1, fill="both")  # Это важно для отображения
 
         # Панель управления
         control_frame = ttk.Frame(search_frame)
         control_frame.pack(fill="x", pady=10)
 
-        # Кнопки
+        # Левая часть панели (кнопки)
+        left_control_frame = ttk.Frame(control_frame)
+        left_control_frame.pack(side="left", fill="x", expand=True)
+
         self.search_btn = tk.Button(
-            control_frame,
+            left_control_frame,
             text="НАЧАТЬ ПОИСК",
             font=self.button_font,
             width=20,
@@ -107,7 +112,7 @@ class XParserApp:
         self.search_btn.pack(side="left", padx=5)
 
         self.stop_btn = tk.Button(
-            control_frame,
+            left_control_frame,
             text="ОСТАНОВИТЬ",
             font=self.button_font,
             width=20,
@@ -119,14 +124,22 @@ class XParserApp:
         )
         self.stop_btn.pack(side="left", padx=5)
 
-        # Настройка потоков
-        thread_frame = ttk.Frame(control_frame)
-        thread_frame.pack(side="right", padx=10)
+        # Счетчик найденных ссылок
+        self.counter_label = ttk.Label(
+            left_control_frame,
+            text="Найдено: 0",
+            font=self.main_font
+        )
+        self.counter_label.pack(side="left", padx=10)
 
-        ttk.Label(thread_frame, text="Потоки:", font=self.main_font).pack(side="left")
+        # Правая часть панели (настройки потоков)
+        right_control_frame = ttk.Frame(control_frame)
+        right_control_frame.pack(side="right")
+
+        ttk.Label(right_control_frame, text="Потоки:", font=self.main_font).pack(side="left")
 
         self.thread_spinbox = tk.Spinbox(
-            thread_frame,
+            right_control_frame,
             from_=1,
             to=10,
             width=3,
@@ -225,8 +238,6 @@ class XParserApp:
             justify="center"
         ).pack(pady=5)
 
-        self.tab_control.pack(expand=1, fill="both")
-
     def _center_window(self):
         """Центрирование окна на экране"""
         self.root.update_idletasks()
@@ -323,6 +334,22 @@ class XParserApp:
             self.thread_spinbox.insert(0, "3")
             self.thread_count = 3
 
+    def _process_result_queue(self):
+        """Обработка очереди результатов"""
+        try:
+            while True:
+                result = self.result_queue.get_nowait()
+                self._display_result(result)
+                if result['telegram_url'] != "Not found":
+                    self._save_to_excel(result)
+                    self.found_count += 1
+                    self.counter_label.config(text=f"Найдено: {self.found_count}")
+        except queue.Empty:
+            pass
+        finally:
+            self.root.after(100, self._process_result_queue)
+
+
     def start_search(self):
         """Запуск поиска"""
         if self.search_running:
@@ -340,6 +367,8 @@ class XParserApp:
         self.results_text.delete(1.0, "end")
         self.results_text.config(state="disabled")
         self.excel_path = None  # Сброс для создания нового файла
+        self.found_count = 0    # Сброс счетчика
+        self.counter_label.config(text="Найдено: 0")
 
         self._update_thread_count()
 
