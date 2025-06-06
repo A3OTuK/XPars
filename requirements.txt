@@ -1,6 +1,6 @@
 requests
-pandas
 openpyxl
+xlwt
 selenium
 webdriver-manager
 urllib3

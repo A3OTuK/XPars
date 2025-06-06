@@ -1,0 +1,266 @@
+2025-06-06 19:07:12,888 - __main__ - INFO - XPARSER v0.93 запущен
+2025-06-06 19:07:27,737 - __main__ - INFO - Сохранены теги: 'Инвестиции...'
+2025-06-06 19:07:29,772 - Search - INFO - Инициализирован YouTubeSearcher с 3 потоками
+2025-06-06 19:07:29,798 - Search - INFO - Поиск каналов (попытка 1): 'Инвестиции'
+2025-06-06 19:07:29,798 - __main__ - INFO - Запущен поиск: 'Инвестиции'
+2025-06-06 19:07:29,799 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:07:34,105 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:07:34,462 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:07:34,608 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:08:09,846 - Search - ERROR - Ошибка поиска (попытка 1): Message: timeout: Timed out receiving message from renderer: 28.117
+  (Session info: chrome=137.0.7151.69)
+Stacktrace:
+	GetHandleVerifier [0x0x783763+63299]
+	GetHandleVerifier [0x0x7837a4+63364]
+	(No symbol) [0x0x5b1113]
+	(No symbol) [0x0x5a1beb]
+	(No symbol) [0x0x5a1921]
+	(No symbol) [0x0x59f8c4]
+	(No symbol) [0x0x5a038d]
+	(No symbol) [0x0x5acb99]
+	(No symbol) [0x0x5be265]
+	(No symbol) [0x0x5c3c96]
+	(No symbol) [0x0x5a09cd]
+	(No symbol) [0x0x5bdfc9]
+	(No symbol) [0x0x63fd65]
+	(No symbol) [0x0x61e376]
+	(No symbol) [0x0x5ed6e0]
+	(No symbol) [0x0x5ee544]
+	GetHandleVerifier [0x0x9de033+2531347]
+	GetHandleVerifier [0x0x9d9332+2511634]
+	GetHandleVerifier [0x0x7a9eda+220858]
+	GetHandleVerifier [0x0x79a528+156936]
+	GetHandleVerifier [0x0x7a0c5d+183357]
+	GetHandleVerifier [0x0x78b6c8+95912]
+	GetHandleVerifier [0x0x78b870+96336]
+	GetHandleVerifier [0x0x77664a+9770]
+	BaseThreadInitThunk [0x0x7787fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc827e+238]
+
+2025-06-06 19:08:20,296 - Search - INFO - Поиск каналов (попытка 2): 'Инвестиции'
+2025-06-06 19:08:20,296 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:08:25,986 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:08:26,144 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:08:26,286 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:08:59,410 - Search - ERROR - Ошибка поиска (попытка 2): Message: timeout: Timed out receiving message from renderer: 25.689
+  (Session info: chrome=137.0.7151.69)
+Stacktrace:
+	GetHandleVerifier [0x0x783763+63299]
+	GetHandleVerifier [0x0x7837a4+63364]
+	(No symbol) [0x0x5b1113]
+	(No symbol) [0x0x5a1beb]
+	(No symbol) [0x0x5a1921]
+	(No symbol) [0x0x59f8c4]
+	(No symbol) [0x0x5a038d]
+	(No symbol) [0x0x5acb99]
+	(No symbol) [0x0x5be265]
+	(No symbol) [0x0x5c3c96]
+	(No symbol) [0x0x5a09cd]
+	(No symbol) [0x0x5bdfc9]
+	(No symbol) [0x0x63fd65]
+	(No symbol) [0x0x61e376]
+	(No symbol) [0x0x5ed6e0]
+	(No symbol) [0x0x5ee544]
+	GetHandleVerifier [0x0x9de033+2531347]
+	GetHandleVerifier [0x0x9d9332+2511634]
+	GetHandleVerifier [0x0x7a9eda+220858]
+	GetHandleVerifier [0x0x79a528+156936]
+	GetHandleVerifier [0x0x7a0c5d+183357]
+	GetHandleVerifier [0x0x78b6c8+95912]
+	GetHandleVerifier [0x0x78b870+96336]
+	GetHandleVerifier [0x0x77664a+9770]
+	BaseThreadInitThunk [0x0x7787fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77cc827e+238]
+
+2025-06-06 19:09:06,863 - Search - INFO - Поиск каналов (попытка 3): 'Инвестиции'
+2025-06-06 19:09:06,863 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:09:09,901 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:09:10,046 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:09:10,189 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:09:29,014 - Search - INFO - Найдено каналов: 78
+2025-06-06 19:09:31,790 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:09:34,060 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:09:34,207 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:09:34,362 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:09:39,031 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@inpoland_invest
+2025-06-06 19:10:18,906 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:10:18,906 - Search - INFO - Обработан канал: https://www.youtube.com/@inpoland_invest -> Not found
+2025-06-06 19:10:24,627 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:10:24,813 - __main__ - INFO - Создан новый Excel файл: results/results_20250606_191024.xlsx
+2025-06-06 19:10:26,874 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:10:27,019 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:10:27,164 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:10:29,115 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Solabuto_Nikolaj
+2025-06-06 19:11:04,315 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:11:04,316 - Search - INFO - Обработан канал: https://www.youtube.com/@Solabuto_Nikolaj -> Not found
+2025-06-06 19:11:06,784 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:11:08,293 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:11:08,448 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:11:08,587 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:11:09,959 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@AndreiNamaha
+2025-06-06 19:11:41,539 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:11:41,540 - Search - INFO - Обработан канал: https://www.youtube.com/@AndreiNamaha -> Not found
+2025-06-06 19:11:44,289 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:11:45,945 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:11:46,087 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:11:46,226 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:11:48,132 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@InvestFutureRu
+2025-06-06 19:12:52,957 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:12:52,957 - Search - INFO - Обработан канал: https://www.youtube.com/@InvestFutureRu -> Not found
+2025-06-06 19:12:59,546 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:13:01,313 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:13:01,450 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:13:01,600 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:13:03,925 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@TradeProfitTrading
+2025-06-06 19:13:50,951 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:13:50,951 - Search - INFO - Обработан канал: https://www.youtube.com/@TradeProfitTrading -> Not found
+2025-06-06 19:13:56,858 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:14:00,558 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:14:00,741 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:14:00,888 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:14:02,991 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@%D0%94%D0%BE%D0%B1%D1%8B%D1%87%D0%B0%D0%94%D0%B5%D0%BD%D0%B5%D0%B3%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8%D0%B2%D0%B0%D0%BA%D1%86%D0%B8
+2025-06-06 19:14:17,675 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/dobichadeneg
+2025-06-06 19:14:17,675 - Search - INFO - Обработан канал: https://www.youtube.com/@%D0%94%D0%BE%D0%B1%D1%8B%D1%87%D0%B0%D0%94%D0%B5%D0%BD%D0%B5%D0%B3%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8%D0%B2%D0%B0%D0%BA%D1%86%D0%B8 -> https://t.me/dobichadeneg
+2025-06-06 19:14:20,221 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:14:22,144 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:14:22,293 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:14:22,468 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:14:24,561 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@mansur_halalinvest
+2025-06-06 19:15:10,317 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:15:10,317 - Search - INFO - Обработан канал: https://www.youtube.com/@mansur_halalinvest -> Not found
+2025-06-06 19:15:14,560 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:15:17,235 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:15:17,401 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:15:17,583 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:15:19,246 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@bessonov.invest
+2025-06-06 19:15:26,283 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/bessonov_invest
+2025-06-06 19:15:26,283 - Search - INFO - Обработан канал: https://www.youtube.com/@bessonov.invest -> https://t.me/bessonov_invest
+2025-06-06 19:15:28,783 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:15:30,628 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:15:30,770 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:15:30,923 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:15:33,821 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw
+2025-06-06 19:16:06,865 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:16:06,865 - Search - INFO - Обработан канал: https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw -> Not found
+2025-06-06 19:16:09,373 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:16:10,895 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:16:11,040 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:16:11,186 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:16:12,545 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Stanislav_trader
+2025-06-06 19:16:21,967 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/trader_nt
+2025-06-06 19:16:21,967 - Search - INFO - Обработан канал: https://www.youtube.com/@Stanislav_trader -> https://t.me/trader_nt
+2025-06-06 19:16:24,190 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:16:25,660 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:16:25,799 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:16:25,941 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:16:27,324 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@%D0%9A%D0%A3%D0%A0%D0%A1%D0%94%D0%9E%D0%9B%D0%9B%D0%90%D0%A0%D0%90-%D0%9D%D0%9E%D0%92%D0%9E%D0%A1%D0%A2%D0%98%D0%A0%D0%AB%D0%9D%D0%9A%D0%90
+2025-06-06 19:16:59,969 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:16:59,969 - Search - INFO - Обработан канал: https://www.youtube.com/@%D0%9A%D0%A3%D0%A0%D0%A1%D0%94%D0%9E%D0%9B%D0%9B%D0%90%D0%A0%D0%90-%D0%9D%D0%9E%D0%92%D0%9E%D0%A1%D0%A2%D0%98%D0%A0%D0%AB%D0%9D%D0%9A%D0%90 -> Not found
+2025-06-06 19:17:02,868 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:17:06,388 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:06,538 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:06,681 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:17:08,132 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@investment_in_future
+2025-06-06 19:17:34,476 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:17:34,477 - Search - INFO - Обработан канал: https://www.youtube.com/@investment_in_future -> Not found
+2025-06-06 19:17:37,120 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:17:38,794 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:38,947 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:39,086 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:17:40,578 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Dima2001IL
+2025-06-06 19:17:49,265 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/investorD2
+2025-06-06 19:17:49,265 - Search - INFO - Обработан канал: https://www.youtube.com/@Dima2001IL -> https://t.me/investorD2
+2025-06-06 19:17:51,758 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:17:54,194 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:54,332 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:17:54,465 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:17:56,010 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Daria_vor0nina_invest
+2025-06-06 19:18:12,887 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/daria_vor0nina_invest
+2025-06-06 19:18:12,887 - Search - INFO - Обработан канал: https://www.youtube.com/@Daria_vor0nina_invest -> https://t.me/daria_vor0nina_invest
+2025-06-06 19:18:15,336 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:18:16,766 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:16,911 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:17,051 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:18:18,393 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@InvestBeard
+2025-06-06 19:18:25,521 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/pro_invest_beard
+2025-06-06 19:18:25,521 - Search - INFO - Обработан канал: https://www.youtube.com/@InvestBeard -> https://t.me/pro_invest_beard
+2025-06-06 19:18:28,720 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:18:30,459 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:30,611 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:30,748 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:18:33,786 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@AlexeyL.
+2025-06-06 19:18:39,973 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/AlexeyL_Trading_Investment
+2025-06-06 19:18:39,973 - Search - INFO - Обработан канал: https://www.youtube.com/@AlexeyL. -> https://t.me/AlexeyL_Trading_Investment
+2025-06-06 19:18:42,200 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:18:43,567 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:43,716 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:43,854 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:18:45,525 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Kar_Nik
+2025-06-06 19:18:53,795 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/KarpovNiko
+2025-06-06 19:18:53,795 - Search - INFO - Обработан канал: https://www.youtube.com/@Kar_Nik -> https://t.me/KarpovNiko
+2025-06-06 19:18:57,292 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:18:58,640 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:58,793 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:18:58,942 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:19:00,267 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@T-Invest_official
+2025-06-06 19:19:29,008 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:19:29,009 - Search - INFO - Обработан канал: https://www.youtube.com/@T-Invest_official -> Not found
+2025-06-06 19:19:31,496 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:19:33,851 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:19:33,988 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:19:34,120 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:19:35,897 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@KonstantinInvestments
+2025-06-06 19:20:07,751 - TGPars - WARNING - Telegram ссылка не найдена
+2025-06-06 19:20:07,751 - Search - INFO - Обработан канал: https://www.youtube.com/@KonstantinInvestments -> Not found
+2025-06-06 19:20:11,529 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:20:13,851 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:14,008 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:14,160 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:20:16,093 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@pro_investments
+2025-06-06 19:20:25,323 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/Jkinvest/?utm_source=youtube
+2025-06-06 19:20:25,323 - Search - INFO - Обработан канал: https://www.youtube.com/@pro_investments -> https://t.me/Jkinvest
+2025-06-06 19:20:27,798 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:20:29,091 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:29,227 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:29,368 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:20:30,840 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@finbazar
+2025-06-06 19:20:38,249 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+P6U-74jFgCE1Y2Iy
+2025-06-06 19:20:38,249 - Search - INFO - Обработан канал: https://www.youtube.com/@finbazar -> https://t.me/+P6U-74jFgCE1Y2Iy
+2025-06-06 19:20:40,499 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:20:41,904 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:42,042 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:42,181 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:20:43,583 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@ProLifeInvest
+2025-06-06 19:20:52,501 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+PpoOI2M8lH0zYzZi
+2025-06-06 19:20:52,501 - Search - INFO - Обработан канал: https://www.youtube.com/@ProLifeInvest -> https://t.me/+PpoOI2M8lH0zYzZi
+2025-06-06 19:20:54,731 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:20:56,107 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:56,352 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:20:56,488 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:20:57,802 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@InvestIvan
+2025-06-06 19:21:07,073 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/investments_ivana
+2025-06-06 19:21:07,073 - Search - INFO - Обработан канал: https://www.youtube.com/@InvestIvan -> https://t.me/investments_ivana
+2025-06-06 19:21:09,556 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:21:10,900 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:11,036 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:11,171 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:21:12,537 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@cryptosei4
+2025-06-06 19:21:20,548 - TGPars - INFO - Найдена ссылка в редиректе: https://telegram.me/capital_ost_bot
+2025-06-06 19:21:20,548 - Search - INFO - Обработан канал: https://www.youtube.com/@cryptosei4 -> https://telegram.me/capital_ost_bot
+2025-06-06 19:21:22,839 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:21:24,289 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:24,426 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:24,565 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:21:25,871 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@dollar-ruble-korolev-subscribe
+2025-06-06 19:21:34,518 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/rtsinvestment
+2025-06-06 19:21:34,519 - Search - INFO - Обработан канал: https://www.youtube.com/@dollar-ruble-korolev-subscribe -> https://t.me/rtsinvestment
+2025-06-06 19:21:36,760 - WDM - INFO - ====== WebDriver manager ======
+2025-06-06 19:21:38,086 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:38,237 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-06 19:21:38,380 - WDM - INFO - Driver [C:\Users\Comp\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver.exe] found in cache
+2025-06-06 19:21:39,802 - TGPars - INFO - Начинаем парсинг канала: https://www.youtube.com/@Artem_Tuzov
+2025-06-06 19:21:49,941 - TGPars - INFO - Найдена ссылка в редиректе: https://t.me/+d8Mzre0x7Gg3Y2Qy
+2025-06-06 19:21:49,941 - Search - INFO - Обработан канал: https://www.youtube.com/@Artem_Tuzov -> https://t.me/+d8Mzre0x7Gg3Y2Qy
+2025-06-06 19:21:52,207 - WDM - INFO - ====== WebDriver manager ======

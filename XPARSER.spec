@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('D:\\Github\\XPars\\debug.log', '.'), ('D:\\Github\\XPars\\requirements.txt', '.')],
+    datas=[('debug.log', '.'), ('requirements.txt', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['D:\\Github\\XPars\\icon.ico'],
+    icon=['icon.ico'],
 )

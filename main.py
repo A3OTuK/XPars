@@ -8,11 +8,12 @@ import logging
 import sys
 import threading
 import queue
-import pandas as pd
+from openpyxl import Workbook, load_workbook
+
 
 # Конфигурация приложения
 APP_NAME = "XPARSER"
-APP_VERSION = "0.92"
+APP_VERSION = "0.93"
 
 # Настройка глобального логгера
 def setup_logging():
@@ -265,46 +266,41 @@ class XParserApp:
                 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
                 self.excel_path = f"results/results_{timestamp}.xlsx"
 
-                # Создаем новый DataFrame
-                df = pd.DataFrame([{
-                    'YouTube URL': result['youtube_url'],
-                    'Telegram URL': result['telegram_url'],
-                    'Дата': datetime.now().strftime('%Y-%m-%d'),
-                    'Время': datetime.now().strftime('%H:%M:%S')
-                }])
+                # Создаем новую книгу Excel
+                wb = Workbook()
+                ws = wb.active
+                ws.title = "Результаты"
 
-                # Сохраняем в новый файл
-                df.to_excel(
-                    self.excel_path,
-                    sheet_name='Результаты',
-                    index=False,
-                    engine='openpyxl'
-                )
+                # Заголовки
+                ws.append(['YouTube URL', 'Telegram URL', 'Дата', 'Время'])
+
+                # Данные
+                ws.append([
+                    result['youtube_url'],
+                    result['telegram_url'],
+                    datetime.now().strftime('%Y-%m-%d'),
+                    datetime.now().strftime('%H:%M:%S')
+                ])
+
+                # Сохраняем файл
+                wb.save(self.excel_path)
                 logger.info(f"Создан новый Excel файл: {self.excel_path}")
             else:
-                # Если файл уже существует, читаем его и дописываем данные
+                # Если файл уже существует, загружаем его и дописываем данные
                 try:
-                    # Читаем существующие данные
-                    existing_df = pd.read_excel(self.excel_path, engine='openpyxl')
+                    wb = load_workbook(self.excel_path)
+                    ws = wb.active
 
-                    # Создаем DataFrame с новыми данными
-                    new_data = {
-                        'YouTube URL': result['youtube_url'],
-                        'Telegram URL': result['telegram_url'],
-                        'Дата': datetime.now().strftime('%Y-%m-%d'),
-                        'Время': datetime.now().strftime('%H:%M:%S')
-                    }
+                    # Добавляем новую строку
+                    ws.append([
+                        result['youtube_url'],
+                        result['telegram_url'],
+                        datetime.now().strftime('%Y-%m-%d'),
+                        datetime.now().strftime('%H:%M:%S')
+                    ])
 
-                    # Объединяем старые и новые данные
-                    updated_df = pd.concat([existing_df, pd.DataFrame([new_data])], ignore_index=True)
-
-                    # Перезаписываем файл с обновленными данными
-                    updated_df.to_excel(
-                        self.excel_path,
-                        sheet_name='Результаты',
-                        index=False,
-                        engine='openpyxl'
-                    )
+                    # Сохраняем изменения
+                    wb.save(self.excel_path)
                 except Exception as e:
                     logger.error(f"Ошибка при дописывании в Excel: {str(e)}")
                     # Если не удалось дописать, создаем новый файл
